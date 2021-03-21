@@ -10,7 +10,7 @@ PySlowFast is an open source video understanding codebase from FAIR that provide
 
 The goal of PySlowFast is to provide a high-performance, light-weight pytorch codebase provides state-of-the-art video backbones for video understanding research on different tasks (classification, detection, and etc). It is designed in order to support rapid implementation and evaluation of novel video research ideas. PySlowFast includes implementations of the following backbone network architectures:
 
-- SlowFast 
+- SlowFast
 - SlowOnly
 - C2D
 - I3D
@@ -35,4 +35,9 @@ Please find installation instructions for PyTorch and PySlowFast in [INSTALL.md]
 ## Quick Start
 
 Follow the example in [GETTING_STARTED.md](GETTING_STARTED.md) to start playing video models with PySlowFast.
-> /SlowFast_tst_v1/SlowFast-master0329/SlowFast-master/tools/configs/Kinetics/c2/SLOWFAST_8x8_R50.yaml
+
+```sh
+python tools/train_net.py
+```
+
+>config files: /SlowFast-tst/tools/configs/Kinetics/c2/SLOWFAST_8x8_R50.yaml
