@@ -1,0 +1,1869 @@
+ssh://chenxi@166.111.76.48:60565/home/chenxi/anaconda3/envs/slowfastPy/bin/python -u /home/chenxi/SlowFast_tst/SlowFast-master0329/SlowFast-master/tools/run_net.py
+usage: run_net.py [-h] [--shard_id SHARD_ID] [--num_shards NUM_SHARDS]
+                  [--init_method INIT_METHOD] [--cfg CFG_FILE]
+                  ...
+
+Provide SlowFast video training and testing pipeline.
+====================
+Num of GPUs:  3
+AUTO_RESUME: True
+BATCH_SIZE: 32
+CHECKPOINT_FILE_PATH: /home/chenxi/SlowFast_tst/SlowFast-master0329/SlowFast-master/tools/checkpoints/SLOWFAST_8x8_R50.pkl
+CHECKPOINT_INFLATE: False
+CHECKPOINT_PERIOD: 1
+CHECKPOINT_TYPE: caffe2
+DATASET: kinetics
+ENABLE: True
+EVAL_PERIOD: 10
+BATCH_SIZE: 64
+CHECKPOINT_FILE_PATH: /home/chenxi/SlowFast_tst/SlowFast-master0329/SlowFast-master/tools/checkpoints_4/checkpoints/checkpoint_epoch_00300.pyth
+CHECKPOINT_TYPE: pytorch
+DATASET: kinetics
+ENABLE: False
+NUM_ENSEMBLE_VIEWS: 10
+NUM_SPATIAL_CROPS: 3
+output dir is:  ./checkpoints_6
+begin to trian the model...
+gpu is over 1
+[INFO: train_net.py: 243]: Train with config:
+[INFO: train_net.py: 244]: {'AVA': {'ANNOTATION_DIR': './data/ava/annotations/',
+         'BGR': False,
+         'DETECTION_SCORE_THRESH': 0.9,
+         'EXCLUSION_FILE': 'ava_val_excluded_timestamps_v2.2.csv',
+         'FRAME_DIR': './data/ava/frames/',
+         'FRAME_LIST_DIR': './data/ava/frame_lists/',
+         'FULL_TEST_ON_VAL': False,
+         'GROUNDTRUTH_FILE': 'ava_val_v2.2.csv',
+         'IMG_PROC_BACKEND': 'cv2',
+         'LABEL_MAP_FILE': 'ava_action_list_v2.2_for_activitynet_2019.pbtxt',
+         'TEST_FORCE_FLIP': False,
+         'TEST_LISTS': ['val.csv'],
+         'TEST_PREDICT_BOX_LISTS': ['ava_val_predicted_boxes.csv'],
+         'TRAIN_GT_BOX_LISTS': ['ava_train_v2.2.csv'],
+         'TRAIN_LISTS': ['train.csv'],
+         'TRAIN_PCA_EIGVAL': [0.225, 0.224, 0.229],
+         'TRAIN_PCA_EIGVEC': [[-0.5675, 0.7192, 0.4009],
+                              [-0.5808, -0.0045, -0.814],
+                              [-0.5836, -0.6948, 0.4203]],
+         'TRAIN_PCA_JITTER_ONLY': True,
+         'TRAIN_PREDICT_BOX_LISTS': [],
+         'TRAIN_USE_COLOR_AUGMENTATION': False},
+ 'BN': {'EPSILON': 1e-05,
+        'MOMENTUM': 0.1,
+        'NUM_BATCHES_PRECISE': 26,
+        'USE_PRECISE_STATS': True,
+        'WEIGHT_DECAY': 0.0},
+ 'DATA': {'CROP_SIZE': 224,
+          'INPUT_CHANNEL_NUM': [3, 3],
+          'MEAN': [0.45, 0.45, 0.45],
+          'NUM_FRAMES': 8,
+          'PATH_PREFIX': '',
+          'PATH_TO_DATA_DIR': '/home/chenxi/dataset/train_data/train_data',
+          'SAMPLING_RATE': 1,
+          'STD': [0.225, 0.225, 0.225],
+          'TEST_CROP_SIZE': 256,
+          'TRAIN_CROP_SIZE': 224,
+          'TRAIN_JITTER_SCALES': [256, 320]},
+ 'DATA_LOADER': {'ENABLE_MULTI_THREAD_DECODE': False,
+                 'NUM_WORKERS': 12,
+                 'PIN_MEMORY': True},
+ 'DETECTION': {'ALIGNED': True,
+               'ENABLE': False,
+               'ROI_XFORM_RESOLUTION': 7,
+               'SPATIAL_SCALE_FACTOR': 16},
+ 'DIST_BACKEND': 'nccl',
+ 'LOG_PERIOD': 10,
+ 'MODEL': {'ARCH': 'slowfast',
+           'DROPOUT_RATE': 0.5,
+           'FC_INIT_STD': 0.01,
+           'LOSS_FUNC': 'cross_entropy',
+           'MULTI_PATHWAY_ARCH': ['slowfast'],
+           'NUM_CLASSES': 3,
+           'SINGLE_PATHWAY_ARCH': ['c2d', 'i3d', 'slowonly']},
+ 'NONLOCAL': {'GROUP': [[1, 1], [1, 1], [1, 1], [1, 1]],
+              'INSTANTIATION': 'dot_product',
+              'LOCATION': [[[], []], [[], []], [[], []], [[], []]],
+              'POOL': [[[1, 2, 2], [1, 2, 2]],
+                       [[1, 2, 2], [1, 2, 2]],
+                       [[1, 2, 2], [1, 2, 2]],
+                       [[1, 2, 2], [1, 2, 2]]]},
+ 'NUM_GPUS': 3,
+ 'NUM_SHARDS': 1,
+ 'OUTPUT_DIR': './checkpoints_6',
+ 'RESNET': {'DEPTH': 50,
+            'INPLACE_RELU': True,
+            'NUM_BLOCK_TEMP_KERNEL': [[3, 3], [4, 4], [6, 6], [3, 3]],
+            'NUM_GROUPS': 1,
+            'SPATIAL_DILATIONS': [[1, 1], [1, 1], [1, 1], [1, 1]],
+            'SPATIAL_STRIDES': [[1, 1], [2, 2], [2, 2], [2, 2]],
+            'STRIDE_1X1': False,
+            'TRANS_FUNC': 'bottleneck_transform',
+            'WIDTH_PER_GROUP': 64,
+            'ZERO_INIT_FINAL_BN': True},
+ 'RNG_SEED': 0,
+ 'SHARD_ID': 0,
+ 'SLOWFAST': {'ALPHA': 4,
+              'BETA_INV': 8,
+              'FUSION_CONV_CHANNEL_RATIO': 2,
+              'FUSION_KERNEL_SZ': 7},
+ 'SOLVER': {'BASE_LR': 0.001,
+            'DAMPENING': 0.0,
+            'GAMMA': 0.1,
+            'LRS': [],
+            'LR_POLICY': 'cosine',
+            'MAX_EPOCH': 150,
+            'MOMENTUM': 0.9,
+            'NESTEROV': True,
+            'OPTIMIZING_METHOD': 'sgd',
+            'STEPS': [],
+            'STEP_SIZE': 1,
+            'WARMUP_EPOCHS': 35,
+            'WARMUP_FACTOR': 0.1,
+            'WARMUP_START_LR': 0.01,
+            'WEIGHT_DECAY': 0.0001},
+ 'TEST': {'BATCH_SIZE': 64,
+          'CHECKPOINT_FILE_PATH': '/home/chenxi/SlowFast_tst/SlowFast-master0329/SlowFast-master/tools/checkpoints_4/checkpoints/checkpoint_epoch_00300.pyth',
+          'CHECKPOINT_TYPE': 'pytorch',
+          'DATASET': 'kinetics',
+          'ENABLE': False,
+          'NUM_ENSEMBLE_VIEWS': 10,
+          'NUM_SPATIAL_CROPS': 3},
+ 'TRAIN': {'AUTO_RESUME': True,
+           'BATCH_SIZE': 32,
+           'CHECKPOINT_FILE_PATH': '/home/chenxi/SlowFast_tst/SlowFast-master0329/SlowFast-master/tools/checkpoints/SLOWFAST_8x8_R50.pkl',
+           'CHECKPOINT_INFLATE': False,
+           'CHECKPOINT_PERIOD': 1,
+           'CHECKPOINT_TYPE': 'caffe2',
+           'DATASET': 'kinetics',
+           'ENABLE': True,
+           'EVAL_PERIOD': 10}}
+[INFO: misc.py: 51]: Model:
+DistributedDataParallel(
+  (module): SlowFastModel(
+    (s1): VideoModelStem(
+      (pathway0_stem): ResNetBasicStem(
+        (conv): Conv3d(3, 64, kernel_size=[1, 7, 7], stride=[1, 2, 2], padding=[0, 3, 3], bias=False)
+        (bn): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (pool_layer): MaxPool3d(kernel_size=[1, 3, 3], stride=[1, 2, 2], padding=[0, 1, 1], dilation=1, ceil_mode=False)
+      )
+      (pathway1_stem): ResNetBasicStem(
+        (conv): Conv3d(3, 8, kernel_size=[5, 7, 7], stride=[1, 2, 2], padding=[2, 3, 3], bias=False)
+        (bn): BatchNorm3d(8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (pool_layer): MaxPool3d(kernel_size=[1, 3, 3], stride=[1, 2, 2], padding=[0, 1, 1], dilation=1, ceil_mode=False)
+      )
+    )
+    (s1_fuse): FuseFastToSlow(
+      (conv_f2s): Conv3d(8, 16, kernel_size=[7, 1, 1], stride=[4, 1, 1], padding=[3, 0, 0], bias=False)
+      (bn): BatchNorm3d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+    )
+    (s2): ResStage(
+      (pathway0_res0): ResBlock(
+        (branch1): Conv3d(80, 256, kernel_size=(1, 1, 1), stride=[1, 1, 1], bias=False)
+        (branch1_bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (branch2): BottleneckTransform(
+          (a): Conv3d(80, 64, kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], bias=False)
+          (a_bn): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (a_relu): ReLU(inplace=True)
+          (b): Conv3d(64, 64, kernel_size=[1, 3, 3], stride=[1, 1, 1], padding=[0, 1, 1], dilation=[1, 1, 1], bias=False)
+          (b_bn): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (b_relu): ReLU(inplace=True)
+          (c): Conv3d(64, 256, kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], bias=False)
+          (c_bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (pathway0_res1): ResBlock(
+        (branch2): BottleneckTransform(
+          (a): Conv3d(256, 64, kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], bias=False)
+          (a_bn): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (a_relu): ReLU(inplace=True)
+          (b): Conv3d(64, 64, kernel_size=[1, 3, 3], stride=[1, 1, 1], padding=[0, 1, 1], dilation=[1, 1, 1], bias=False)
+          (b_bn): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (b_relu): ReLU(inplace=True)
+          (c): Conv3d(64, 256, kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], bias=False)
+          (c_bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (pathway0_res2): ResBlock(
+        (branch2): BottleneckTransform(
+          (a): Conv3d(256, 64, kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], bias=False)
+          (a_bn): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (a_relu): ReLU(inplace=True)
+          (b): Conv3d(64, 64, kernel_size=[1, 3, 3], stride=[1, 1, 1], padding=[0, 1, 1], dilation=[1, 1, 1], bias=False)
+          (b_bn): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (b_relu): ReLU(inplace=True)
+          (c): Conv3d(64, 256, kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], bias=False)
+          (c_bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (pathway1_res0): ResBlock(
+        (branch1): Conv3d(8, 32, kernel_size=(1, 1, 1), stride=[1, 1, 1], bias=False)
+        (branch1_bn): BatchNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (branch2): BottleneckTransform(
+          (a): Conv3d(8, 8, kernel_size=[3, 1, 1], stride=[1, 1, 1], padding=[1, 0, 0], bias=False)
+          (a_bn): BatchNorm3d(8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (a_relu): ReLU(inplace=True)
+          (b): Conv3d(8, 8, kernel_size=[1, 3, 3], stride=[1, 1, 1], padding=[0, 1, 1], dilation=[1, 1, 1], bias=False)
+          (b_bn): BatchNorm3d(8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (b_relu): ReLU(inplace=True)
+          (c): Conv3d(8, 32, kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], bias=False)
+          (c_bn): BatchNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (pathway1_res1): ResBlock(
+        (branch2): BottleneckTransform(
+          (a): Conv3d(32, 8, kernel_size=[3, 1, 1], stride=[1, 1, 1], padding=[1, 0, 0], bias=False)
+          (a_bn): BatchNorm3d(8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (a_relu): ReLU(inplace=True)
+          (b): Conv3d(8, 8, kernel_size=[1, 3, 3], stride=[1, 1, 1], padding=[0, 1, 1], dilation=[1, 1, 1], bias=False)
+          (b_bn): BatchNorm3d(8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (b_relu): ReLU(inplace=True)
+          (c): Conv3d(8, 32, kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], bias=False)
+          (c_bn): BatchNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (pathway1_res2): ResBlock(
+        (branch2): BottleneckTransform(
+          (a): Conv3d(32, 8, kernel_size=[3, 1, 1], stride=[1, 1, 1], padding=[1, 0, 0], bias=False)
+          (a_bn): BatchNorm3d(8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (a_relu): ReLU(inplace=True)
+          (b): Conv3d(8, 8, kernel_size=[1, 3, 3], stride=[1, 1, 1], padding=[0, 1, 1], dilation=[1, 1, 1], bias=False)
+          (b_bn): BatchNorm3d(8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (b_relu): ReLU(inplace=True)
+          (c): Conv3d(8, 32, kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], bias=False)
+          (c_bn): BatchNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (s2_fuse): FuseFastToSlow(
+      (conv_f2s): Conv3d(32, 64, kernel_size=[7, 1, 1], stride=[4, 1, 1], padding=[3, 0, 0], bias=False)
+      (bn): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+    )
+    (pathway0_pool): MaxPool3d(kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], dilation=1, ceil_mode=False)
+    (pathway1_pool): MaxPool3d(kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], dilation=1, ceil_mode=False)
+    (s3): ResStage(
+      (pathway0_res0): ResBlock(
+        (branch1): Conv3d(320, 512, kernel_size=(1, 1, 1), stride=[1, 2, 2], bias=False)
+        (branch1_bn): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (branch2): BottleneckTransform(
+          (a): Conv3d(320, 128, kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], bias=False)
+          (a_bn): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (a_relu): ReLU(inplace=True)
+          (b): Conv3d(128, 128, kernel_size=[1, 3, 3], stride=[1, 2, 2], padding=[0, 1, 1], dilation=[1, 1, 1], bias=False)
+          (b_bn): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (b_relu): ReLU(inplace=True)
+          (c): Conv3d(128, 512, kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], bias=False)
+          (c_bn): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (pathway0_res1): ResBlock(
+        (branch2): BottleneckTransform(
+          (a): Conv3d(512, 128, kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], bias=False)
+          (a_bn): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (a_relu): ReLU(inplace=True)
+          (b): Conv3d(128, 128, kernel_size=[1, 3, 3], stride=[1, 1, 1], padding=[0, 1, 1], dilation=[1, 1, 1], bias=False)
+          (b_bn): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (b_relu): ReLU(inplace=True)
+          (c): Conv3d(128, 512, kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], bias=False)
+          (c_bn): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (pathway0_res2): ResBlock(
+        (branch2): BottleneckTransform(
+          (a): Conv3d(512, 128, kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], bias=False)
+          (a_bn): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (a_relu): ReLU(inplace=True)
+          (b): Conv3d(128, 128, kernel_size=[1, 3, 3], stride=[1, 1, 1], padding=[0, 1, 1], dilation=[1, 1, 1], bias=False)
+          (b_bn): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (b_relu): ReLU(inplace=True)
+          (c): Conv3d(128, 512, kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], bias=False)
+          (c_bn): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (pathway0_res3): ResBlock(
+        (branch2): BottleneckTransform(
+          (a): Conv3d(512, 128, kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], bias=False)
+          (a_bn): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (a_relu): ReLU(inplace=True)
+          (b): Conv3d(128, 128, kernel_size=[1, 3, 3], stride=[1, 1, 1], padding=[0, 1, 1], dilation=[1, 1, 1], bias=False)
+          (b_bn): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (b_relu): ReLU(inplace=True)
+          (c): Conv3d(128, 512, kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], bias=False)
+          (c_bn): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (pathway1_res0): ResBlock(
+        (branch1): Conv3d(32, 64, kernel_size=(1, 1, 1), stride=[1, 2, 2], bias=False)
+        (branch1_bn): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (branch2): BottleneckTransform(
+          (a): Conv3d(32, 16, kernel_size=[3, 1, 1], stride=[1, 1, 1], padding=[1, 0, 0], bias=False)
+          (a_bn): BatchNorm3d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (a_relu): ReLU(inplace=True)
+          (b): Conv3d(16, 16, kernel_size=[1, 3, 3], stride=[1, 2, 2], padding=[0, 1, 1], dilation=[1, 1, 1], bias=False)
+          (b_bn): BatchNorm3d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (b_relu): ReLU(inplace=True)
+          (c): Conv3d(16, 64, kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], bias=False)
+          (c_bn): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (pathway1_res1): ResBlock(
+        (branch2): BottleneckTransform(
+          (a): Conv3d(64, 16, kernel_size=[3, 1, 1], stride=[1, 1, 1], padding=[1, 0, 0], bias=False)
+          (a_bn): BatchNorm3d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (a_relu): ReLU(inplace=True)
+          (b): Conv3d(16, 16, kernel_size=[1, 3, 3], stride=[1, 1, 1], padding=[0, 1, 1], dilation=[1, 1, 1], bias=False)
+          (b_bn): BatchNorm3d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (b_relu): ReLU(inplace=True)
+          (c): Conv3d(16, 64, kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], bias=False)
+          (c_bn): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (pathway1_res2): ResBlock(
+        (branch2): BottleneckTransform(
+          (a): Conv3d(64, 16, kernel_size=[3, 1, 1], stride=[1, 1, 1], padding=[1, 0, 0], bias=False)
+          (a_bn): BatchNorm3d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (a_relu): ReLU(inplace=True)
+          (b): Conv3d(16, 16, kernel_size=[1, 3, 3], stride=[1, 1, 1], padding=[0, 1, 1], dilation=[1, 1, 1], bias=False)
+          (b_bn): BatchNorm3d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (b_relu): ReLU(inplace=True)
+          (c): Conv3d(16, 64, kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], bias=False)
+          (c_bn): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (pathway1_res3): ResBlock(
+        (branch2): BottleneckTransform(
+          (a): Conv3d(64, 16, kernel_size=[3, 1, 1], stride=[1, 1, 1], padding=[1, 0, 0], bias=False)
+          (a_bn): BatchNorm3d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (a_relu): ReLU(inplace=True)
+          (b): Conv3d(16, 16, kernel_size=[1, 3, 3], stride=[1, 1, 1], padding=[0, 1, 1], dilation=[1, 1, 1], bias=False)
+          (b_bn): BatchNorm3d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (b_relu): ReLU(inplace=True)
+          (c): Conv3d(16, 64, kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], bias=False)
+          (c_bn): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (s3_fuse): FuseFastToSlow(
+      (conv_f2s): Conv3d(64, 128, kernel_size=[7, 1, 1], stride=[4, 1, 1], padding=[3, 0, 0], bias=False)
+      (bn): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+    )
+    (s4): ResStage(
+      (pathway0_res0): ResBlock(
+        (branch1): Conv3d(640, 1024, kernel_size=(1, 1, 1), stride=[1, 2, 2], bias=False)
+        (branch1_bn): BatchNorm3d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (branch2): BottleneckTransform(
+          (a): Conv3d(640, 256, kernel_size=[3, 1, 1], stride=[1, 1, 1], padding=[1, 0, 0], bias=False)
+          (a_bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (a_relu): ReLU(inplace=True)
+          (b): Conv3d(256, 256, kernel_size=[1, 3, 3], stride=[1, 2, 2], padding=[0, 1, 1], dilation=[1, 1, 1], bias=False)
+          (b_bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (b_relu): ReLU(inplace=True)
+          (c): Conv3d(256, 1024, kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], bias=False)
+          (c_bn): BatchNorm3d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (pathway0_res1): ResBlock(
+        (branch2): BottleneckTransform(
+          (a): Conv3d(1024, 256, kernel_size=[3, 1, 1], stride=[1, 1, 1], padding=[1, 0, 0], bias=False)
+          (a_bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (a_relu): ReLU(inplace=True)
+          (b): Conv3d(256, 256, kernel_size=[1, 3, 3], stride=[1, 1, 1], padding=[0, 1, 1], dilation=[1, 1, 1], bias=False)
+          (b_bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (b_relu): ReLU(inplace=True)
+          (c): Conv3d(256, 1024, kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], bias=False)
+          (c_bn): BatchNorm3d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (pathway0_res2): ResBlock(
+        (branch2): BottleneckTransform(
+          (a): Conv3d(1024, 256, kernel_size=[3, 1, 1], stride=[1, 1, 1], padding=[1, 0, 0], bias=False)
+          (a_bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (a_relu): ReLU(inplace=True)
+          (b): Conv3d(256, 256, kernel_size=[1, 3, 3], stride=[1, 1, 1], padding=[0, 1, 1], dilation=[1, 1, 1], bias=False)
+          (b_bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (b_relu): ReLU(inplace=True)
+          (c): Conv3d(256, 1024, kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], bias=False)
+          (c_bn): BatchNorm3d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (pathway0_res3): ResBlock(
+        (branch2): BottleneckTransform(
+          (a): Conv3d(1024, 256, kernel_size=[3, 1, 1], stride=[1, 1, 1], padding=[1, 0, 0], bias=False)
+          (a_bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (a_relu): ReLU(inplace=True)
+          (b): Conv3d(256, 256, kernel_size=[1, 3, 3], stride=[1, 1, 1], padding=[0, 1, 1], dilation=[1, 1, 1], bias=False)
+          (b_bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (b_relu): ReLU(inplace=True)
+          (c): Conv3d(256, 1024, kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], bias=False)
+          (c_bn): BatchNorm3d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (pathway0_res4): ResBlock(
+        (branch2): BottleneckTransform(
+          (a): Conv3d(1024, 256, kernel_size=[3, 1, 1], stride=[1, 1, 1], padding=[1, 0, 0], bias=False)
+          (a_bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (a_relu): ReLU(inplace=True)
+          (b): Conv3d(256, 256, kernel_size=[1, 3, 3], stride=[1, 1, 1], padding=[0, 1, 1], dilation=[1, 1, 1], bias=False)
+          (b_bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (b_relu): ReLU(inplace=True)
+          (c): Conv3d(256, 1024, kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], bias=False)
+          (c_bn): BatchNorm3d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (pathway0_res5): ResBlock(
+        (branch2): BottleneckTransform(
+          (a): Conv3d(1024, 256, kernel_size=[3, 1, 1], stride=[1, 1, 1], padding=[1, 0, 0], bias=False)
+          (a_bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (a_relu): ReLU(inplace=True)
+          (b): Conv3d(256, 256, kernel_size=[1, 3, 3], stride=[1, 1, 1], padding=[0, 1, 1], dilation=[1, 1, 1], bias=False)
+          (b_bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (b_relu): ReLU(inplace=True)
+          (c): Conv3d(256, 1024, kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], bias=False)
+          (c_bn): BatchNorm3d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (pathway1_res0): ResBlock(
+        (branch1): Conv3d(64, 128, kernel_size=(1, 1, 1), stride=[1, 2, 2], bias=False)
+        (branch1_bn): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (branch2): BottleneckTransform(
+          (a): Conv3d(64, 32, kernel_size=[3, 1, 1], stride=[1, 1, 1], padding=[1, 0, 0], bias=False)
+          (a_bn): BatchNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (a_relu): ReLU(inplace=True)
+          (b): Conv3d(32, 32, kernel_size=[1, 3, 3], stride=[1, 2, 2], padding=[0, 1, 1], dilation=[1, 1, 1], bias=False)
+          (b_bn): BatchNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (b_relu): ReLU(inplace=True)
+          (c): Conv3d(32, 128, kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], bias=False)
+          (c_bn): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (pathway1_res1): ResBlock(
+        (branch2): BottleneckTransform(
+          (a): Conv3d(128, 32, kernel_size=[3, 1, 1], stride=[1, 1, 1], padding=[1, 0, 0], bias=False)
+          (a_bn): BatchNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (a_relu): ReLU(inplace=True)
+          (b): Conv3d(32, 32, kernel_size=[1, 3, 3], stride=[1, 1, 1], padding=[0, 1, 1], dilation=[1, 1, 1], bias=False)
+          (b_bn): BatchNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (b_relu): ReLU(inplace=True)
+          (c): Conv3d(32, 128, kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], bias=False)
+          (c_bn): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (pathway1_res2): ResBlock(
+        (branch2): BottleneckTransform(
+          (a): Conv3d(128, 32, kernel_size=[3, 1, 1], stride=[1, 1, 1], padding=[1, 0, 0], bias=False)
+          (a_bn): BatchNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (a_relu): ReLU(inplace=True)
+          (b): Conv3d(32, 32, kernel_size=[1, 3, 3], stride=[1, 1, 1], padding=[0, 1, 1], dilation=[1, 1, 1], bias=False)
+          (b_bn): BatchNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (b_relu): ReLU(inplace=True)
+          (c): Conv3d(32, 128, kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], bias=False)
+          (c_bn): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (pathway1_res3): ResBlock(
+        (branch2): BottleneckTransform(
+          (a): Conv3d(128, 32, kernel_size=[3, 1, 1], stride=[1, 1, 1], padding=[1, 0, 0], bias=False)
+          (a_bn): BatchNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (a_relu): ReLU(inplace=True)
+          (b): Conv3d(32, 32, kernel_size=[1, 3, 3], stride=[1, 1, 1], padding=[0, 1, 1], dilation=[1, 1, 1], bias=False)
+          (b_bn): BatchNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (b_relu): ReLU(inplace=True)
+          (c): Conv3d(32, 128, kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], bias=False)
+          (c_bn): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (pathway1_res4): ResBlock(
+        (branch2): BottleneckTransform(
+          (a): Conv3d(128, 32, kernel_size=[3, 1, 1], stride=[1, 1, 1], padding=[1, 0, 0], bias=False)
+          (a_bn): BatchNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (a_relu): ReLU(inplace=True)
+          (b): Conv3d(32, 32, kernel_size=[1, 3, 3], stride=[1, 1, 1], padding=[0, 1, 1], dilation=[1, 1, 1], bias=False)
+          (b_bn): BatchNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (b_relu): ReLU(inplace=True)
+          (c): Conv3d(32, 128, kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], bias=False)
+          (c_bn): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (pathway1_res5): ResBlock(
+        (branch2): BottleneckTransform(
+          (a): Conv3d(128, 32, kernel_size=[3, 1, 1], stride=[1, 1, 1], padding=[1, 0, 0], bias=False)
+          (a_bn): BatchNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (a_relu): ReLU(inplace=True)
+          (b): Conv3d(32, 32, kernel_size=[1, 3, 3], stride=[1, 1, 1], padding=[0, 1, 1], dilation=[1, 1, 1], bias=False)
+          (b_bn): BatchNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (b_relu): ReLU(inplace=True)
+          (c): Conv3d(32, 128, kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], bias=False)
+          (c_bn): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (s4_fuse): FuseFastToSlow(
+      (conv_f2s): Conv3d(128, 256, kernel_size=[7, 1, 1], stride=[4, 1, 1], padding=[3, 0, 0], bias=False)
+      (bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+    )
+    (s5): ResStage(
+      (pathway0_res0): ResBlock(
+        (branch1): Conv3d(1280, 2048, kernel_size=(1, 1, 1), stride=[1, 2, 2], bias=False)
+        (branch1_bn): BatchNorm3d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (branch2): BottleneckTransform(
+          (a): Conv3d(1280, 512, kernel_size=[3, 1, 1], stride=[1, 1, 1], padding=[1, 0, 0], bias=False)
+          (a_bn): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (a_relu): ReLU(inplace=True)
+          (b): Conv3d(512, 512, kernel_size=[1, 3, 3], stride=[1, 2, 2], padding=[0, 1, 1], dilation=[1, 1, 1], bias=False)
+          (b_bn): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (b_relu): ReLU(inplace=True)
+          (c): Conv3d(512, 2048, kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], bias=False)
+          (c_bn): BatchNorm3d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (pathway0_res1): ResBlock(
+        (branch2): BottleneckTransform(
+          (a): Conv3d(2048, 512, kernel_size=[3, 1, 1], stride=[1, 1, 1], padding=[1, 0, 0], bias=False)
+          (a_bn): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (a_relu): ReLU(inplace=True)
+          (b): Conv3d(512, 512, kernel_size=[1, 3, 3], stride=[1, 1, 1], padding=[0, 1, 1], dilation=[1, 1, 1], bias=False)
+          (b_bn): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (b_relu): ReLU(inplace=True)
+          (c): Conv3d(512, 2048, kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], bias=False)
+          (c_bn): BatchNorm3d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (pathway0_res2): ResBlock(
+        (branch2): BottleneckTransform(
+          (a): Conv3d(2048, 512, kernel_size=[3, 1, 1], stride=[1, 1, 1], padding=[1, 0, 0], bias=False)
+          (a_bn): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (a_relu): ReLU(inplace=True)
+          (b): Conv3d(512, 512, kernel_size=[1, 3, 3], stride=[1, 1, 1], padding=[0, 1, 1], dilation=[1, 1, 1], bias=False)
+          (b_bn): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (b_relu): ReLU(inplace=True)
+          (c): Conv3d(512, 2048, kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], bias=False)
+          (c_bn): BatchNorm3d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (pathway1_res0): ResBlock(
+        (branch1): Conv3d(128, 256, kernel_size=(1, 1, 1), stride=[1, 2, 2], bias=False)
+        (branch1_bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (branch2): BottleneckTransform(
+          (a): Conv3d(128, 64, kernel_size=[3, 1, 1], stride=[1, 1, 1], padding=[1, 0, 0], bias=False)
+          (a_bn): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (a_relu): ReLU(inplace=True)
+          (b): Conv3d(64, 64, kernel_size=[1, 3, 3], stride=[1, 2, 2], padding=[0, 1, 1], dilation=[1, 1, 1], bias=False)
+          (b_bn): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (b_relu): ReLU(inplace=True)
+          (c): Conv3d(64, 256, kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], bias=False)
+          (c_bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (pathway1_res1): ResBlock(
+        (branch2): BottleneckTransform(
+          (a): Conv3d(256, 64, kernel_size=[3, 1, 1], stride=[1, 1, 1], padding=[1, 0, 0], bias=False)
+          (a_bn): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (a_relu): ReLU(inplace=True)
+          (b): Conv3d(64, 64, kernel_size=[1, 3, 3], stride=[1, 1, 1], padding=[0, 1, 1], dilation=[1, 1, 1], bias=False)
+          (b_bn): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (b_relu): ReLU(inplace=True)
+          (c): Conv3d(64, 256, kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], bias=False)
+          (c_bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+      (pathway1_res2): ResBlock(
+        (branch2): BottleneckTransform(
+          (a): Conv3d(256, 64, kernel_size=[3, 1, 1], stride=[1, 1, 1], padding=[1, 0, 0], bias=False)
+          (a_bn): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (a_relu): ReLU(inplace=True)
+          (b): Conv3d(64, 64, kernel_size=[1, 3, 3], stride=[1, 1, 1], padding=[0, 1, 1], dilation=[1, 1, 1], bias=False)
+          (b_bn): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+          (b_relu): ReLU(inplace=True)
+          (c): Conv3d(64, 256, kernel_size=[1, 1, 1], stride=[1, 1, 1], padding=[0, 0, 0], bias=False)
+          (c_bn): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (head): ResNetBasicHead(
+      (pathway0_avgpool): AvgPool3d(kernel_size=[2, 7, 7], stride=1, padding=0)
+      (pathway1_avgpool): AvgPool3d(kernel_size=[8, 7, 7], stride=1, padding=0)
+      (dropout): Dropout(p=0.5, inplace=False)
+      (projection): Linear(in_features=2304, out_features=3, bias=True)
+      (act): Softmax(dim=4)
+    )
+  )
+)
+[INFO: misc.py: 52]: Params: 33,651,403
+[INFO: misc.py: 53]: Mem: 259.892578125 MB
+[INFO: misc.py: 54]: nvidia-smi
+Fri Oct  2 11:58:49 2020
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 430.40       Driver Version: 430.40       CUDA Version: 10.1     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|===============================+======================+======================|
+|   0  TITAN X (Pascal)    Off  | 00000000:05:00.0  On |                  N/A |
+| 28%   50C    P8    13W / 250W |     42MiB / 12192MiB |      0%      Default |
++-------------------------------+----------------------+----------------------+
+|   1  TITAN X (Pascal)    Off  | 00000000:06:00.0 Off |                  N/A |
+| 40%   61C    P2    57W / 250W |    919MiB / 12196MiB |     27%      Default |
++-------------------------------+----------------------+----------------------+
+|   2  TITAN X (Pascal)    Off  | 00000000:09:00.0 Off |                  N/A |
+| 37%   58C    P2    59W / 250W |    919MiB / 12196MiB |     17%      Default |
++-------------------------------+----------------------+----------------------+
+|   3  TITAN X (Pascal)    Off  | 00000000:0A:00.0 Off |                  N/A |
+| 37%   56C    P2    59W / 250W |    919MiB / 12196MiB |     17%      Default |
++-------------------------------+----------------------+----------------------+
+
++-----------------------------------------------------------------------------+
+| Processes:                                                       GPU Memory |
+|  GPU       PID   Type   Process name                             Usage      |
+|=============================================================================|
+|    0      1673      G   /usr/bin/X                                    39MiB |
+|    1       765      C   ...xi/anaconda3/envs/slowfastPy/bin/python   907MiB |
+|    2       766      C   ...xi/anaconda3/envs/slowfastPy/bin/python   907MiB |
+|    3       767      C   ...xi/anaconda3/envs/slowfastPy/bin/python   907MiB |
++-----------------------------------------------------------------------------+
+[INFO: train_net.py: 265]: Load from given checkpoint file.
+/home/chenxi/SlowFast_tst/SlowFast-master0329/SlowFast-master/tools
+[INFO: checkpoint.py: 201]: res_conv1_bn_b: (64,) => s1.pathway0_stem.bn.bias: (64,)
+[INFO: checkpoint.py: 201]: res5_2_branch2a_bn_riv: (512,) => s5.pathway0_res2.branch2.a_bn.running_var: (512,)
+[INFO: checkpoint.py: 201]: t_res4_1_branch2c_bn_riv: (128,) => s4.pathway1_res1.branch2.c_bn.running_var: (128,)
+[INFO: checkpoint.py: 201]: t_res3_2_branch2b_bn_rm: (16,) => s3.pathway1_res2.branch2.b_bn.running_mean: (16,)
+[INFO: checkpoint.py: 201]: res_conv1_bn_s: (64,) => s1.pathway0_stem.bn.weight: (64,)
+[INFO: checkpoint.py: 201]: t_res3_3_branch2b_bn_riv: (16,) => s3.pathway1_res3.branch2.b_bn.running_var: (16,)
+[INFO: checkpoint.py: 201]: res4_4_branch2b_w: (256, 256, 1, 3, 3) => s4.pathway0_res4.branch2.b.weight: (256, 256, 1, 3, 3)
+[INFO: checkpoint.py: 201]: t_res2_1_branch2b_w: (8, 8, 1, 3, 3) => s2.pathway1_res1.branch2.b.weight: (8, 8, 1, 3, 3)
+[INFO: checkpoint.py: 201]: t_res5_1_branch2b_bn_riv: (64,) => s5.pathway1_res1.branch2.b_bn.running_var: (64,)
+[INFO: checkpoint.py: 201]: t_res4_2_branch2a_bn_riv: (32,) => s4.pathway1_res2.branch2.a_bn.running_var: (32,)
+[INFO: checkpoint.py: 201]: res3_1_branch2c_bn_s: (512,) => s3.pathway0_res1.branch2.c_bn.weight: (512,)
+[INFO: checkpoint.py: 201]: res5_1_branch2b_w: (512, 512, 1, 3, 3) => s5.pathway0_res1.branch2.b.weight: (512, 512, 1, 3, 3)
+[INFO: checkpoint.py: 201]: res3_0_branch2a_bn_riv: (128,) => s3.pathway0_res0.branch2.a_bn.running_var: (128,)
+[INFO: checkpoint.py: 201]: t_res2_2_branch2a_bn_rm: (8,) => s2.pathway1_res2.branch2.a_bn.running_mean: (8,)
+[INFO: checkpoint.py: 201]: t_res5_0_branch1_bn_rm: (256,) => s5.pathway1_res0.branch1_bn.running_mean: (256,)
+[INFO: checkpoint.py: 201]: t_res2_1_branch2b_bn_rm: (8,) => s2.pathway1_res1.branch2.b_bn.running_mean: (8,)
+[INFO: checkpoint.py: 201]: t_res3_3_branch2c_bn_riv: (64,) => s3.pathway1_res3.branch2.c_bn.running_var: (64,)
+[INFO: checkpoint.py: 201]: res2_2_branch2b_bn_rm: (64,) => s2.pathway0_res2.branch2.b_bn.running_mean: (64,)
+[INFO: checkpoint.py: 201]: t_res4_3_branch2c_bn_rm: (128,) => s4.pathway1_res3.branch2.c_bn.running_mean: (128,)
+[INFO: checkpoint.py: 201]: res3_3_branch2c_bn_riv: (512,) => s3.pathway0_res3.branch2.c_bn.running_var: (512,)
+[INFO: checkpoint.py: 201]: res5_0_branch2c_bn_riv: (2048,) => s5.pathway0_res0.branch2.c_bn.running_var: (2048,)
+[INFO: checkpoint.py: 201]: res3_2_branch2a_w: (128, 512, 1, 1, 1) => s3.pathway0_res2.branch2.a.weight: (128, 512, 1, 1, 1)
+[INFO: checkpoint.py: 201]: t_res4_5_branch2b_w: (32, 32, 1, 3, 3) => s4.pathway1_res5.branch2.b.weight: (32, 32, 1, 3, 3)
+[INFO: checkpoint.py: 201]: res3_0_branch1_bn_b: (512,) => s3.pathway0_res0.branch1_bn.bias: (512,)
+[INFO: checkpoint.py: 201]: t_pool1_subsample_bn_rm: (16,) => s1_fuse.bn.running_mean: (16,)
+[INFO: checkpoint.py: 201]: t_res5_2_branch2c_bn_riv: (256,) => s5.pathway1_res2.branch2.c_bn.running_var: (256,)
+[INFO: checkpoint.py: 201]: res3_2_branch2c_w: (512, 128, 1, 1, 1) => s3.pathway0_res2.branch2.c.weight: (512, 128, 1, 1, 1)
+[INFO: checkpoint.py: 201]: res2_2_branch2a_bn_riv: (64,) => s2.pathway0_res2.branch2.a_bn.running_var: (64,)
+[INFO: checkpoint.py: 201]: res5_2_branch2a_bn_rm: (512,) => s5.pathway0_res2.branch2.a_bn.running_mean: (512,)
+[INFO: checkpoint.py: 201]: t_res3_2_branch2b_bn_b: (16,) => s3.pathway1_res2.branch2.b_bn.bias: (16,)
+[INFO: checkpoint.py: 201]: t_res3_1_branch2a_bn_b: (16,) => s3.pathway1_res1.branch2.a_bn.bias: (16,)
+[INFO: checkpoint.py: 201]: res4_5_branch2a_w: (256, 1024, 3, 1, 1) => s4.pathway0_res5.branch2.a.weight: (256, 1024, 3, 1, 1)
+[INFO: checkpoint.py: 201]: t_res5_0_branch2c_bn_riv: (256,) => s5.pathway1_res0.branch2.c_bn.running_var: (256,)
+[INFO: checkpoint.py: 201]: t_res2_0_branch2a_w: (8, 8, 3, 1, 1) => s2.pathway1_res0.branch2.a.weight: (8, 8, 3, 1, 1)
+[INFO: checkpoint.py: 201]: t_res4_2_branch2c_w: (128, 32, 1, 1, 1) => s4.pathway1_res2.branch2.c.weight: (128, 32, 1, 1, 1)
+[INFO: checkpoint.py: 201]: res2_2_branch2a_bn_b: (64,) => s2.pathway0_res2.branch2.a_bn.bias: (64,)
+[INFO: checkpoint.py: 201]: t_res5_2_branch2c_bn_rm: (256,) => s5.pathway1_res2.branch2.c_bn.running_mean: (256,)
+[INFO: checkpoint.py: 201]: res2_2_branch2a_bn_s: (64,) => s2.pathway0_res2.branch2.a_bn.weight: (64,)
+[INFO: checkpoint.py: 201]: t_res4_1_branch2b_w: (32, 32, 1, 3, 3) => s4.pathway1_res1.branch2.b.weight: (32, 32, 1, 3, 3)
+[INFO: checkpoint.py: 201]: res5_1_branch2c_w: (2048, 512, 1, 1, 1) => s5.pathway0_res1.branch2.c.weight: (2048, 512, 1, 1, 1)
+[INFO: checkpoint.py: 201]: t_res5_2_branch2a_bn_s: (64,) => s5.pathway1_res2.branch2.a_bn.weight: (64,)
+[INFO: checkpoint.py: 201]: t_res4_0_branch2c_bn_s: (128,) => s4.pathway1_res0.branch2.c_bn.weight: (128,)
+[INFO: checkpoint.py: 201]: res5_1_branch2c_bn_rm: (2048,) => s5.pathway0_res1.branch2.c_bn.running_mean: (2048,)
+[INFO: checkpoint.py: 201]: t_res5_2_branch2a_bn_b: (64,) => s5.pathway1_res2.branch2.a_bn.bias: (64,)
+[INFO: checkpoint.py: 201]: t_res3_0_branch2c_bn_riv: (64,) => s3.pathway1_res0.branch2.c_bn.running_var: (64,)
+[INFO: checkpoint.py: 201]: t_res4_0_branch2c_bn_b: (128,) => s4.pathway1_res0.branch2.c_bn.bias: (128,)
+[INFO: checkpoint.py: 201]: res4_0_branch2b_w: (256, 256, 1, 3, 3) => s4.pathway0_res0.branch2.b.weight: (256, 256, 1, 3, 3)
+[INFO: checkpoint.py: 201]: t_res4_2_branch2c_bn_rm: (128,) => s4.pathway1_res2.branch2.c_bn.running_mean: (128,)
+[INFO: checkpoint.py: 201]: t_res4_1_branch2b_bn_riv: (32,) => s4.pathway1_res1.branch2.b_bn.running_var: (32,)
+[INFO: checkpoint.py: 201]: res3_2_branch2a_bn_b: (128,) => s3.pathway0_res2.branch2.a_bn.bias: (128,)
+[INFO: checkpoint.py: 201]: t_res2_1_branch2b_bn_b: (8,) => s2.pathway1_res1.branch2.b_bn.bias: (8,)
+[INFO: checkpoint.py: 201]: res4_4_branch2b_bn_b: (256,) => s4.pathway0_res4.branch2.b_bn.bias: (256,)
+[INFO: checkpoint.py: 201]: t_res4_0_branch1_bn_rm: (128,) => s4.pathway1_res0.branch1_bn.running_mean: (128,)
+[INFO: checkpoint.py: 201]: t_res5_0_branch2b_bn_riv: (64,) => s5.pathway1_res0.branch2.b_bn.running_var: (64,)
+[INFO: checkpoint.py: 201]: res3_1_branch2c_bn_b: (512,) => s3.pathway0_res1.branch2.c_bn.bias: (512,)
+[INFO: checkpoint.py: 201]: res4_0_branch2c_bn_riv: (1024,) => s4.pathway0_res0.branch2.c_bn.running_var: (1024,)
+[INFO: checkpoint.py: 201]: t_res4_1_branch2a_bn_s: (32,) => s4.pathway1_res1.branch2.a_bn.weight: (32,)
+[INFO: checkpoint.py: 201]: res3_3_branch2b_bn_riv: (128,) => s3.pathway0_res3.branch2.b_bn.running_var: (128,)
+[INFO: checkpoint.py: 201]: res5_1_branch2a_bn_riv: (512,) => s5.pathway0_res1.branch2.a_bn.running_var: (512,)
+[INFO: checkpoint.py: 201]: res4_4_branch2b_bn_s: (256,) => s4.pathway0_res4.branch2.b_bn.weight: (256,)
+[INFO: checkpoint.py: 201]: res5_0_branch1_bn_rm: (2048,) => s5.pathway0_res0.branch1_bn.running_mean: (2048,)
+[INFO: checkpoint.py: 201]: t_res4_1_branch2a_bn_b: (32,) => s4.pathway1_res1.branch2.a_bn.bias: (32,)
+[INFO: checkpoint.py: 201]: t_res3_3_branch2c_bn_subsample_bn_s: (128,) => s3_fuse.bn.weight: (128,)
+[INFO: checkpoint.py: 201]: res4_4_branch2a_bn_rm: (256,) => s4.pathway0_res4.branch2.a_bn.running_mean: (256,)
+[INFO: checkpoint.py: 201]: res3_0_branch1_w: (512, 320, 1, 1, 1) => s3.pathway0_res0.branch1.weight: (512, 320, 1, 1, 1)
+[INFO: checkpoint.py: 201]: t_res3_0_branch2b_bn_rm: (16,) => s3.pathway1_res0.branch2.b_bn.running_mean: (16,)
+[INFO: checkpoint.py: 201]: t_res3_3_branch2c_bn_subsample_bn_b: (128,) => s3_fuse.bn.bias: (128,)
+[INFO: checkpoint.py: 201]: res5_0_branch2a_bn_riv: (512,) => s5.pathway0_res0.branch2.a_bn.running_var: (512,)
+[INFO: checkpoint.py: 201]: t_res4_4_branch2a_bn_riv: (32,) => s4.pathway1_res4.branch2.a_bn.running_var: (32,)
+[INFO: checkpoint.py: 201]: res4_5_branch2c_bn_riv: (1024,) => s4.pathway0_res5.branch2.c_bn.running_var: (1024,)
+[INFO: checkpoint.py: 201]: t_res2_0_branch2c_bn_riv: (32,) => s2.pathway1_res0.branch2.c_bn.running_var: (32,)
+[INFO: checkpoint.py: 201]: t_res2_2_branch2c_bn_s: (32,) => s2.pathway1_res2.branch2.c_bn.weight: (32,)
+[INFO: checkpoint.py: 201]: t_res4_3_branch2a_bn_riv: (32,) => s4.pathway1_res3.branch2.a_bn.running_var: (32,)
+[INFO: checkpoint.py: 201]: t_res4_5_branch2a_bn_s: (32,) => s4.pathway1_res5.branch2.a_bn.weight: (32,)
+[INFO: checkpoint.py: 201]: t_res2_0_branch2b_bn_b: (8,) => s2.pathway1_res0.branch2.b_bn.bias: (8,)
+[INFO: checkpoint.py: 201]: t_res2_2_branch2c_bn_b: (32,) => s2.pathway1_res2.branch2.c_bn.bias: (32,)
+[INFO: checkpoint.py: 201]: t_res4_4_branch2b_bn_rm: (32,) => s4.pathway1_res4.branch2.b_bn.running_mean: (32,)
+[INFO: checkpoint.py: 201]: t_res2_2_branch2b_bn_b: (8,) => s2.pathway1_res2.branch2.b_bn.bias: (8,)
+[INFO: checkpoint.py: 201]: res3_0_branch1_bn_rm: (512,) => s3.pathway0_res0.branch1_bn.running_mean: (512,)
+[INFO: checkpoint.py: 201]: res4_1_branch2c_w: (1024, 256, 1, 1, 1) => s4.pathway0_res1.branch2.c.weight: (1024, 256, 1, 1, 1)
+[INFO: checkpoint.py: 201]: res2_1_branch2c_bn_riv: (256,) => s2.pathway0_res1.branch2.c_bn.running_var: (256,)
+[INFO: checkpoint.py: 201]: t_res5_2_branch2b_w: (64, 64, 1, 3, 3) => s5.pathway1_res2.branch2.b.weight: (64, 64, 1, 3, 3)
+[INFO: checkpoint.py: 201]: t_res2_0_branch2c_w: (32, 8, 1, 1, 1) => s2.pathway1_res0.branch2.c.weight: (32, 8, 1, 1, 1)
+[INFO: checkpoint.py: 201]: res4_5_branch2c_w: (1024, 256, 1, 1, 1) => s4.pathway0_res5.branch2.c.weight: (1024, 256, 1, 1, 1)
+[INFO: checkpoint.py: 201]: res3_3_branch2c_bn_b: (512,) => s3.pathway0_res3.branch2.c_bn.bias: (512,)
+[INFO: checkpoint.py: 201]: t_res3_2_branch2c_bn_rm: (64,) => s3.pathway1_res2.branch2.c_bn.running_mean: (64,)
+[INFO: checkpoint.py: 201]: t_res4_0_branch1_bn_riv: (128,) => s4.pathway1_res0.branch1_bn.running_var: (128,)
+[INFO: checkpoint.py: 201]: t_res5_1_branch2b_bn_b: (64,) => s5.pathway1_res1.branch2.b_bn.bias: (64,)
+[INFO: checkpoint.py: 201]: t_res5_1_branch2b_w: (64, 64, 1, 3, 3) => s5.pathway1_res1.branch2.b.weight: (64, 64, 1, 3, 3)
+[INFO: checkpoint.py: 201]: res3_3_branch2c_bn_s: (512,) => s3.pathway0_res3.branch2.c_bn.weight: (512,)
+[INFO: checkpoint.py: 201]: res3_2_branch2b_w: (128, 128, 1, 3, 3) => s3.pathway0_res2.branch2.b.weight: (128, 128, 1, 3, 3)
+[INFO: checkpoint.py: 201]: res5_1_branch2a_w: (512, 2048, 3, 1, 1) => s5.pathway0_res1.branch2.a.weight: (512, 2048, 3, 1, 1)
+[INFO: checkpoint.py: 201]: t_res3_3_branch2a_bn_riv: (16,) => s3.pathway1_res3.branch2.a_bn.running_var: (16,)
+[INFO: checkpoint.py: 201]: t_res2_2_branch2c_w: (32, 8, 1, 1, 1) => s2.pathway1_res2.branch2.c.weight: (32, 8, 1, 1, 1)
+[INFO: checkpoint.py: 201]: t_res4_5_branch2c_bn_subsample_bn_b: (256,) => s4_fuse.bn.bias: (256,)
+[INFO: checkpoint.py: 201]: res4_5_branch2b_bn_b: (256,) => s4.pathway0_res5.branch2.b_bn.bias: (256,)
+[INFO: checkpoint.py: 201]: t_res3_2_branch2a_bn_riv: (16,) => s3.pathway1_res2.branch2.a_bn.running_var: (16,)
+[INFO: checkpoint.py: 201]: t_res2_2_branch2a_w: (8, 32, 3, 1, 1) => s2.pathway1_res2.branch2.a.weight: (8, 32, 3, 1, 1)
+[INFO: checkpoint.py: 201]: res2_0_branch1_bn_s: (256,) => s2.pathway0_res0.branch1_bn.weight: (256,)
+[INFO: checkpoint.py: 201]: t_res2_0_branch2b_bn_s: (8,) => s2.pathway1_res0.branch2.b_bn.weight: (8,)
+[INFO: checkpoint.py: 201]: t_res4_5_branch2c_bn_subsample_bn_s: (256,) => s4_fuse.bn.weight: (256,)
+[INFO: checkpoint.py: 201]: res4_5_branch2b_bn_s: (256,) => s4.pathway0_res5.branch2.b_bn.weight: (256,)
+[INFO: checkpoint.py: 201]: t_res3_1_branch2b_bn_rm: (16,) => s3.pathway1_res1.branch2.b_bn.running_mean: (16,)
+[INFO: checkpoint.py: 201]: t_res5_2_branch2b_bn_riv: (64,) => s5.pathway1_res2.branch2.b_bn.running_var: (64,)
+[INFO: checkpoint.py: 201]: res4_4_branch2c_bn_b: (1024,) => s4.pathway0_res4.branch2.c_bn.bias: (1024,)
+[INFO: checkpoint.py: 201]: t_res2_1_branch2c_bn_b: (32,) => s2.pathway1_res1.branch2.c_bn.bias: (32,)
+[INFO: checkpoint.py: 201]: res3_3_branch2b_bn_s: (128,) => s3.pathway0_res3.branch2.b_bn.weight: (128,)
+[INFO: checkpoint.py: 201]: t_res3_2_branch2c_bn_riv: (64,) => s3.pathway1_res2.branch2.c_bn.running_var: (64,)
+[INFO: checkpoint.py: 201]: res2_1_branch2a_bn_rm: (64,) => s2.pathway0_res1.branch2.a_bn.running_mean: (64,)
+[INFO: checkpoint.py: 201]: t_res4_5_branch2c_bn_subsample_bn_rm: (256,) => s4_fuse.bn.running_mean: (256,)
+[INFO: checkpoint.py: 201]: res5_1_branch2b_bn_b: (512,) => s5.pathway0_res1.branch2.b_bn.bias: (512,)
+[INFO: checkpoint.py: 201]: res3_1_branch2a_bn_riv: (128,) => s3.pathway0_res1.branch2.a_bn.running_var: (128,)
+[INFO: checkpoint.py: 201]: res5_1_branch2b_bn_s: (512,) => s5.pathway0_res1.branch2.b_bn.weight: (512,)
+[INFO: checkpoint.py: 201]: res4_4_branch2c_w: (1024, 256, 1, 1, 1) => s4.pathway0_res4.branch2.c.weight: (1024, 256, 1, 1, 1)
+[INFO: checkpoint.py: 201]: t_res2_1_branch2c_w: (32, 8, 1, 1, 1) => s2.pathway1_res1.branch2.c.weight: (32, 8, 1, 1, 1)
+[INFO: checkpoint.py: 201]: t_res5_0_branch1_w: (256, 128, 1, 1, 1) => s5.pathway1_res0.branch1.weight: (256, 128, 1, 1, 1)
+[INFO: checkpoint.py: 201]: res2_2_branch2c_bn_riv: (256,) => s2.pathway0_res2.branch2.c_bn.running_var: (256,)
+[INFO: checkpoint.py: 201]: t_res4_5_branch2c_bn_subsample_w: (256, 128, 7, 1, 1) => s4_fuse.conv_f2s.weight: (256, 128, 7, 1, 1)
+[INFO: checkpoint.py: 201]: res4_3_branch2b_bn_rm: (256,) => s4.pathway0_res3.branch2.b_bn.running_mean: (256,)
+[INFO: checkpoint.py: 201]: t_res_conv1_bn_rm: (8,) => s1.pathway1_stem.bn.running_mean: (8,)
+[INFO: checkpoint.py: 201]: t_res3_2_branch2b_bn_riv: (16,) => s3.pathway1_res2.branch2.b_bn.running_var: (16,)
+[INFO: checkpoint.py: 201]: res4_2_branch2c_bn_b: (1024,) => s4.pathway0_res2.branch2.c_bn.bias: (1024,)
+[INFO: checkpoint.py: 201]: res3_3_branch2a_bn_riv: (128,) => s3.pathway0_res3.branch2.a_bn.running_var: (128,)
+[INFO: checkpoint.py: 201]: t_res3_1_branch2a_w: (16, 64, 3, 1, 1) => s3.pathway1_res1.branch2.a.weight: (16, 64, 3, 1, 1)
+[INFO: checkpoint.py: 201]: res2_2_branch2a_w: (64, 256, 1, 1, 1) => s2.pathway0_res2.branch2.a.weight: (64, 256, 1, 1, 1)
+[INFO: checkpoint.py: 201]: res2_0_branch2c_bn_riv: (256,) => s2.pathway0_res0.branch2.c_bn.running_var: (256,)
+[INFO: checkpoint.py: 201]: res2_0_branch2b_bn_riv: (64,) => s2.pathway0_res0.branch2.b_bn.running_var: (64,)
+[INFO: checkpoint.py: 201]: res5_2_branch2b_bn_riv: (512,) => s5.pathway0_res2.branch2.b_bn.running_var: (512,)
+[INFO: checkpoint.py: 201]: t_res4_4_branch2a_bn_rm: (32,) => s4.pathway1_res4.branch2.a_bn.running_mean: (32,)
+[INFO: checkpoint.py: 201]: t_res4_0_branch2a_bn_s: (32,) => s4.pathway1_res0.branch2.a_bn.weight: (32,)
+[INFO: checkpoint.py: 201]: t_res4_4_branch2a_bn_s: (32,) => s4.pathway1_res4.branch2.a_bn.weight: (32,)
+[INFO: checkpoint.py: 201]: t_res3_1_branch2c_w: (64, 16, 1, 1, 1) => s3.pathway1_res1.branch2.c.weight: (64, 16, 1, 1, 1)
+[INFO: checkpoint.py: 201]: t_res4_3_branch2b_bn_rm: (32,) => s4.pathway1_res3.branch2.b_bn.running_mean: (32,)
+[INFO: checkpoint.py: 201]: res4_1_branch2a_bn_s: (256,) => s4.pathway0_res1.branch2.a_bn.weight: (256,)
+[INFO: checkpoint.py: 201]: res2_1_branch2c_bn_b: (256,) => s2.pathway0_res1.branch2.c_bn.bias: (256,)
+[INFO: checkpoint.py: 201]: res3_2_branch2b_bn_b: (128,) => s3.pathway0_res2.branch2.b_bn.bias: (128,)
+[INFO: checkpoint.py: 201]: res3_1_branch2b_bn_s: (128,) => s3.pathway0_res1.branch2.b_bn.weight: (128,)
+[INFO: checkpoint.py: 201]: res4_1_branch2a_bn_b: (256,) => s4.pathway0_res1.branch2.a_bn.bias: (256,)
+[INFO: checkpoint.py: 201]: res3_1_branch2a_bn_b: (128,) => s3.pathway0_res1.branch2.a_bn.bias: (128,)
+[INFO: checkpoint.py: 201]: t_res2_1_branch2a_w: (8, 32, 3, 1, 1) => s2.pathway1_res1.branch2.a.weight: (8, 32, 3, 1, 1)
+[INFO: checkpoint.py: 201]: res2_1_branch2c_bn_s: (256,) => s2.pathway0_res1.branch2.c_bn.weight: (256,)
+[INFO: checkpoint.py: 201]: t_res4_5_branch2b_bn_rm: (32,) => s4.pathway1_res5.branch2.b_bn.running_mean: (32,)
+[INFO: checkpoint.py: 201]: res3_2_branch2b_bn_s: (128,) => s3.pathway0_res2.branch2.b_bn.weight: (128,)
+[INFO: checkpoint.py: 201]: t_res3_2_branch2a_bn_rm: (16,) => s3.pathway1_res2.branch2.a_bn.running_mean: (16,)
+[INFO: checkpoint.py: 201]: t_res2_1_branch2c_bn_s: (32,) => s2.pathway1_res1.branch2.c_bn.weight: (32,)
+[INFO: checkpoint.py: 201]: res5_2_branch2c_bn_riv: (2048,) => s5.pathway0_res2.branch2.c_bn.running_var: (2048,)
+[INFO: checkpoint.py: 201]: res5_1_branch2c_bn_s: (2048,) => s5.pathway0_res1.branch2.c_bn.weight: (2048,)
+[INFO: checkpoint.py: 201]: t_res4_3_branch2a_bn_rm: (32,) => s4.pathway1_res3.branch2.a_bn.running_mean: (32,)
+[INFO: checkpoint.py: 201]: res5_1_branch2c_bn_b: (2048,) => s5.pathway0_res1.branch2.c_bn.bias: (2048,)
+[INFO: checkpoint.py: 201]: t_res4_5_branch2a_bn_riv: (32,) => s4.pathway1_res5.branch2.a_bn.running_var: (32,)
+[INFO: checkpoint.py: 201]: res2_1_branch2b_bn_rm: (64,) => s2.pathway0_res1.branch2.b_bn.running_mean: (64,)
+[INFO: checkpoint.py: 201]: t_res3_3_branch2a_bn_s: (16,) => s3.pathway1_res3.branch2.a_bn.weight: (16,)
+[INFO: checkpoint.py: 201]: res5_0_branch2c_bn_b: (2048,) => s5.pathway0_res0.branch2.c_bn.bias: (2048,)
+[INFO: checkpoint.py: 201]: t_res3_0_branch2c_bn_b: (64,) => s3.pathway1_res0.branch2.c_bn.bias: (64,)
+[INFO: checkpoint.py: 201]: res4_4_branch2b_bn_rm: (256,) => s4.pathway0_res4.branch2.b_bn.running_mean: (256,)
+[INFO: checkpoint.py: 201]: res5_1_branch2b_bn_rm: (512,) => s5.pathway0_res1.branch2.b_bn.running_mean: (512,)
+[INFO: checkpoint.py: 201]: res5_0_branch2b_w: (512, 512, 1, 3, 3) => s5.pathway0_res0.branch2.b.weight: (512, 512, 1, 3, 3)
+[INFO: checkpoint.py: 201]: t_res2_1_branch2b_bn_riv: (8,) => s2.pathway1_res1.branch2.b_bn.running_var: (8,)
+[INFO: checkpoint.py: 201]: t_res3_0_branch2c_bn_s: (64,) => s3.pathway1_res0.branch2.c_bn.weight: (64,)
+[INFO: checkpoint.py: 201]: t_res2_1_branch2a_bn_s: (8,) => s2.pathway1_res1.branch2.a_bn.weight: (8,)
+[INFO: checkpoint.py: 201]: res4_4_branch2a_bn_s: (256,) => s4.pathway0_res4.branch2.a_bn.weight: (256,)
+[INFO: checkpoint.py: 201]: t_res3_2_branch2b_bn_s: (16,) => s3.pathway1_res2.branch2.b_bn.weight: (16,)
+[INFO: checkpoint.py: 201]: t_res4_0_branch2c_bn_rm: (128,) => s4.pathway1_res0.branch2.c_bn.running_mean: (128,)
+[INFO: checkpoint.py: 201]: res4_2_branch2b_bn_s: (256,) => s4.pathway0_res2.branch2.b_bn.weight: (256,)
+[INFO: checkpoint.py: 201]: t_res2_1_branch2a_bn_b: (8,) => s2.pathway1_res1.branch2.a_bn.bias: (8,)
+[INFO: checkpoint.py: 201]: res4_4_branch2a_bn_b: (256,) => s4.pathway0_res4.branch2.a_bn.bias: (256,)
+[INFO: checkpoint.py: 201]: t_res4_5_branch2c_bn_subsample_bn_riv: (256,) => s4_fuse.bn.running_var: (256,)
+[INFO: checkpoint.py: 201]: res4_2_branch2b_bn_b: (256,) => s4.pathway0_res2.branch2.b_bn.bias: (256,)
+[INFO: checkpoint.py: 201]: t_res5_2_branch2c_w: (256, 64, 1, 1, 1) => s5.pathway1_res2.branch2.c.weight: (256, 64, 1, 1, 1)
+[INFO: checkpoint.py: 201]: res4_3_branch2c_bn_rm: (1024,) => s4.pathway0_res3.branch2.c_bn.running_mean: (1024,)
+[INFO: checkpoint.py: 201]: t_res4_3_branch2a_bn_b: (32,) => s4.pathway1_res3.branch2.a_bn.bias: (32,)
+[INFO: checkpoint.py: 201]: t_res3_0_branch2c_w: (64, 16, 1, 1, 1) => s3.pathway1_res0.branch2.c.weight: (64, 16, 1, 1, 1)
+[INFO: checkpoint.py: 201]: t_res4_2_branch2a_w: (32, 128, 3, 1, 1) => s4.pathway1_res2.branch2.a.weight: (32, 128, 3, 1, 1)
+[INFO: checkpoint.py: 201]: res4_5_branch2b_w: (256, 256, 1, 3, 3) => s4.pathway0_res5.branch2.b.weight: (256, 256, 1, 3, 3)
+[INFO: checkpoint.py: 201]: t_res4_3_branch2a_bn_s: (32,) => s4.pathway1_res3.branch2.a_bn.weight: (32,)
+[INFO: checkpoint.py: 201]: res4_3_branch2c_bn_riv: (1024,) => s4.pathway0_res3.branch2.c_bn.running_var: (1024,)
+[INFO: checkpoint.py: 201]: t_res4_2_branch2a_bn_rm: (32,) => s4.pathway1_res2.branch2.a_bn.running_mean: (32,)
+[INFO: checkpoint.py: 201]: res3_2_branch2a_bn_rm: (128,) => s3.pathway0_res2.branch2.a_bn.running_mean: (128,)
+[INFO: checkpoint.py: 201]: res4_2_branch2c_bn_rm: (1024,) => s4.pathway0_res2.branch2.c_bn.running_mean: (1024,)
+[INFO: checkpoint.py: 201]: res4_0_branch2c_bn_rm: (1024,) => s4.pathway0_res0.branch2.c_bn.running_mean: (1024,)
+[INFO: checkpoint.py: 201]: t_res5_1_branch2c_bn_riv: (256,) => s5.pathway1_res1.branch2.c_bn.running_var: (256,)
+[INFO: checkpoint.py: 201]: t_res4_4_branch2c_bn_rm: (128,) => s4.pathway1_res4.branch2.c_bn.running_mean: (128,)
+[INFO: checkpoint.py: 201]: res3_0_branch2a_bn_s: (128,) => s3.pathway0_res0.branch2.a_bn.weight: (128,)
+[INFO: checkpoint.py: 201]: t_res3_0_branch2b_bn_riv: (16,) => s3.pathway1_res0.branch2.b_bn.running_var: (16,)
+[INFO: checkpoint.py: 201]: t_res3_3_branch2c_bn_subsample_bn_rm: (128,) => s3_fuse.bn.running_mean: (128,)
+[INFO: checkpoint.py: 201]: res3_0_branch2a_bn_b: (128,) => s3.pathway0_res0.branch2.a_bn.bias: (128,)
+[INFO: checkpoint.py: 201]: res4_4_branch2a_w: (256, 1024, 3, 1, 1) => s4.pathway0_res4.branch2.a.weight: (256, 1024, 3, 1, 1)
+[INFO: checkpoint.py: 201]: t_res2_2_branch2c_bn_riv: (32,) => s2.pathway1_res2.branch2.c_bn.running_var: (32,)
+[INFO: checkpoint.py: 201]: t_res3_3_branch2a_bn_rm: (16,) => s3.pathway1_res3.branch2.a_bn.running_mean: (16,)
+[INFO: checkpoint.py: 201]: t_res2_2_branch2b_w: (8, 8, 1, 3, 3) => s2.pathway1_res2.branch2.b.weight: (8, 8, 1, 3, 3)
+[INFO: checkpoint.py: 201]: t_res2_0_branch2a_bn_rm: (8,) => s2.pathway1_res0.branch2.a_bn.running_mean: (8,)
+[INFO: checkpoint.py: 201]: t_res3_0_branch2c_bn_rm: (64,) => s3.pathway1_res0.branch2.c_bn.running_mean: (64,)
+[INFO: checkpoint.py: 201]: res4_5_branch2a_bn_rm: (256,) => s4.pathway0_res5.branch2.a_bn.running_mean: (256,)
+[INFO: checkpoint.py: 201]: t_res4_4_branch2b_bn_s: (32,) => s4.pathway1_res4.branch2.b_bn.weight: (32,)
+[INFO: checkpoint.py: 201]: res5_0_branch2b_bn_riv: (512,) => s5.pathway0_res0.branch2.b_bn.running_var: (512,)
+[INFO: checkpoint.py: 201]: t_res4_1_branch2b_bn_b: (32,) => s4.pathway1_res1.branch2.b_bn.bias: (32,)
+[INFO: checkpoint.py: 201]: res3_1_branch2c_bn_rm: (512,) => s3.pathway0_res1.branch2.c_bn.running_mean: (512,)
+[INFO: checkpoint.py: 201]: t_res4_4_branch2b_bn_b: (32,) => s4.pathway1_res4.branch2.b_bn.bias: (32,)
+[INFO: checkpoint.py: 201]: res3_1_branch2a_bn_s: (128,) => s3.pathway0_res1.branch2.a_bn.weight: (128,)
+[INFO: checkpoint.py: 201]: t_res3_3_branch2c_bn_b: (64,) => s3.pathway1_res3.branch2.c_bn.bias: (64,)
+[INFO: checkpoint.py: 201]: t_res4_1_branch2b_bn_s: (32,) => s4.pathway1_res1.branch2.b_bn.weight: (32,)
+[INFO: checkpoint.py: 201]: t_res4_4_branch2a_bn_b: (32,) => s4.pathway1_res4.branch2.a_bn.bias: (32,)
+[INFO: checkpoint.py: 201]: res5_1_branch2a_bn_s: (512,) => s5.pathway0_res1.branch2.a_bn.weight: (512,)
+[INFO: checkpoint.py: 201]: res4_0_branch2a_bn_riv: (256,) => s4.pathway0_res0.branch2.a_bn.running_var: (256,)
+[INFO: checkpoint.py: 201]: res5_1_branch2a_bn_b: (512,) => s5.pathway0_res1.branch2.a_bn.bias: (512,)
+[INFO: checkpoint.py: 201]: res4_2_branch2b_bn_riv: (256,) => s4.pathway0_res2.branch2.b_bn.running_var: (256,)
+[INFO: checkpoint.py: 201]: t_res2_2_branch2b_bn_rm: (8,) => s2.pathway1_res2.branch2.b_bn.running_mean: (8,)
+[INFO: checkpoint.py: 201]: res3_0_branch2c_w: (512, 128, 1, 1, 1) => s3.pathway0_res0.branch2.c.weight: (512, 128, 1, 1, 1)
+[INFO: checkpoint.py: 201]: t_res3_0_branch2a_bn_s: (16,) => s3.pathway1_res0.branch2.a_bn.weight: (16,)
+[INFO: checkpoint.py: 201]: t_res4_2_branch2c_bn_riv: (128,) => s4.pathway1_res2.branch2.c_bn.running_var: (128,)
+[INFO: checkpoint.py: 201]: t_res3_0_branch2a_bn_b: (16,) => s3.pathway1_res0.branch2.a_bn.bias: (16,)
+[INFO: checkpoint.py: 201]: t_res3_1_branch2a_bn_riv: (16,) => s3.pathway1_res1.branch2.a_bn.running_var: (16,)
+[INFO: checkpoint.py: 201]: t_res2_0_branch2b_bn_riv: (8,) => s2.pathway1_res0.branch2.b_bn.running_var: (8,)
+[INFO: checkpoint.py: 201]: t_res3_1_branch2a_bn_s: (16,) => s3.pathway1_res1.branch2.a_bn.weight: (16,)
+[INFO: checkpoint.py: 201]: res4_5_branch2b_bn_riv: (256,) => s4.pathway0_res5.branch2.b_bn.running_var: (256,)
+[INFO: checkpoint.py: 201]: res5_2_branch2b_bn_rm: (512,) => s5.pathway0_res2.branch2.b_bn.running_mean: (512,)
+[INFO: checkpoint.py: 201]: t_res3_3_branch2c_bn_s: (64,) => s3.pathway1_res3.branch2.c_bn.weight: (64,)
+[INFO: checkpoint.py: 201]: t_res2_0_branch1_bn_riv: (32,) => s2.pathway1_res0.branch1_bn.running_var: (32,)
+[INFO: checkpoint.py: 201]: res2_2_branch2b_bn_riv: (64,) => s2.pathway0_res2.branch2.b_bn.running_var: (64,)
+[INFO: checkpoint.py: 201]: res2_0_branch1_bn_rm: (256,) => s2.pathway0_res0.branch1_bn.running_mean: (256,)
+[INFO: checkpoint.py: 201]: res2_2_branch2b_w: (64, 64, 1, 3, 3) => s2.pathway0_res2.branch2.b.weight: (64, 64, 1, 3, 3)
+[INFO: checkpoint.py: 201]: res2_1_branch2a_bn_riv: (64,) => s2.pathway0_res1.branch2.a_bn.running_var: (64,)
+[INFO: checkpoint.py: 201]: t_res4_2_branch2b_bn_rm: (32,) => s4.pathway1_res2.branch2.b_bn.running_mean: (32,)
+[INFO: checkpoint.py: 201]: res4_2_branch2a_bn_riv: (256,) => s4.pathway0_res2.branch2.a_bn.running_var: (256,)
+[INFO: checkpoint.py: 201]: res4_2_branch2c_bn_s: (1024,) => s4.pathway0_res2.branch2.c_bn.weight: (1024,)
+[INFO: checkpoint.py: 201]: res3_3_branch2a_bn_s: (128,) => s3.pathway0_res3.branch2.a_bn.weight: (128,)
+[INFO: checkpoint.py: 201]: t_res2_0_branch2a_bn_riv: (8,) => s2.pathway1_res0.branch2.a_bn.running_var: (8,)
+[INFO: checkpoint.py: 201]: res3_0_branch2b_w: (128, 128, 1, 3, 3) => s3.pathway0_res0.branch2.b.weight: (128, 128, 1, 3, 3)
+[INFO: checkpoint.py: 201]: res4_5_branch2a_bn_riv: (256,) => s4.pathway0_res5.branch2.a_bn.running_var: (256,)
+[INFO: checkpoint.py: 201]: t_res3_3_branch2b_bn_rm: (16,) => s3.pathway1_res3.branch2.b_bn.running_mean: (16,)
+[INFO: checkpoint.py: 201]: t_res2_0_branch1_bn_s: (32,) => s2.pathway1_res0.branch1_bn.weight: (32,)
+[INFO: checkpoint.py: 201]: res4_0_branch2b_bn_riv: (256,) => s4.pathway0_res0.branch2.b_bn.running_var: (256,)
+[INFO: checkpoint.py: 201]: t_res4_0_branch2b_bn_riv: (32,) => s4.pathway1_res0.branch2.b_bn.running_var: (32,)
+[INFO: checkpoint.py: 201]: t_res3_0_branch2b_bn_b: (16,) => s3.pathway1_res0.branch2.b_bn.bias: (16,)
+[INFO: checkpoint.py: 201]: t_res2_0_branch1_bn_b: (32,) => s2.pathway1_res0.branch1_bn.bias: (32,)
+[INFO: checkpoint.py: 201]: t_res5_0_branch1_bn_s: (256,) => s5.pathway1_res0.branch1_bn.weight: (256,)
+[INFO: checkpoint.py: 201]: t_res5_1_branch2b_bn_s: (64,) => s5.pathway1_res1.branch2.b_bn.weight: (64,)
+[INFO: checkpoint.py: 201]: t_res3_0_branch1_bn_riv: (64,) => s3.pathway1_res0.branch1_bn.running_var: (64,)
+[INFO: checkpoint.py: 201]: t_res2_2_branch2c_bn_subsample_bn_s: (64,) => s2_fuse.bn.weight: (64,)
+[INFO: checkpoint.py: 201]: res5_0_branch2c_w: (2048, 512, 1, 1, 1) => s5.pathway0_res0.branch2.c.weight: (2048, 512, 1, 1, 1)
+[INFO: checkpoint.py: 201]: t_res4_5_branch2c_bn_s: (128,) => s4.pathway1_res5.branch2.c_bn.weight: (128,)
+[INFO: checkpoint.py: 201]: t_res5_0_branch2b_bn_rm: (64,) => s5.pathway1_res0.branch2.b_bn.running_mean: (64,)
+[INFO: checkpoint.py: 201]: t_res4_5_branch2b_bn_s: (32,) => s4.pathway1_res5.branch2.b_bn.weight: (32,)
+[INFO: checkpoint.py: 201]: t_res4_5_branch2b_bn_riv: (32,) => s4.pathway1_res5.branch2.b_bn.running_var: (32,)
+[INFO: checkpoint.py: 201]: res5_2_branch2a_w: (512, 2048, 3, 1, 1) => s5.pathway0_res2.branch2.a.weight: (512, 2048, 3, 1, 1)
+[INFO: checkpoint.py: 201]: t_res5_1_branch2a_w: (64, 256, 3, 1, 1) => s5.pathway1_res1.branch2.a.weight: (64, 256, 3, 1, 1)
+[INFO: checkpoint.py: 201]: t_res4_3_branch2b_bn_riv: (32,) => s4.pathway1_res3.branch2.b_bn.running_var: (32,)
+[INFO: checkpoint.py: 201]: t_res2_2_branch2c_bn_subsample_bn_b: (64,) => s2_fuse.bn.bias: (64,)
+[INFO: checkpoint.py: 201]: t_res4_5_branch2c_bn_b: (128,) => s4.pathway1_res5.branch2.c_bn.bias: (128,)
+[INFO: checkpoint.py: 201]: t_res4_5_branch2b_bn_b: (32,) => s4.pathway1_res5.branch2.b_bn.bias: (32,)
+[INFO: checkpoint.py: 201]: res2_0_branch2c_bn_rm: (256,) => s2.pathway0_res0.branch2.c_bn.running_mean: (256,)
+[INFO: checkpoint.py: 201]: res5_0_branch1_w: (2048, 1280, 1, 1, 1) => s5.pathway0_res0.branch1.weight: (2048, 1280, 1, 1, 1)
+[INFO: checkpoint.py: 201]: res2_2_branch2c_bn_b: (256,) => s2.pathway0_res2.branch2.c_bn.bias: (256,)
+[INFO: checkpoint.py: 201]: res4_5_branch2c_bn_b: (1024,) => s4.pathway0_res5.branch2.c_bn.bias: (1024,)
+[INFO: checkpoint.py: 201]: t_res2_2_branch2c_bn_subsample_bn_rm: (64,) => s2_fuse.bn.running_mean: (64,)
+[INFO: checkpoint.py: 201]: t_res2_0_branch2c_bn_b: (32,) => s2.pathway1_res0.branch2.c_bn.bias: (32,)
+[INFO: checkpoint.py: 201]: res4_3_branch2b_bn_s: (256,) => s4.pathway0_res3.branch2.b_bn.weight: (256,)
+[INFO: checkpoint.py: 201]: res3_2_branch2c_bn_riv: (512,) => s3.pathway0_res2.branch2.c_bn.running_var: (512,)
+[INFO: checkpoint.py: 201]: res5_0_branch2a_w: (512, 1280, 3, 1, 1) => s5.pathway0_res0.branch2.a.weight: (512, 1280, 3, 1, 1)
+[INFO: checkpoint.py: 201]: t_res2_0_branch2c_bn_s: (32,) => s2.pathway1_res0.branch2.c_bn.weight: (32,)
+[INFO: checkpoint.py: 201]: t_res2_1_branch2a_bn_rm: (8,) => s2.pathway1_res1.branch2.a_bn.running_mean: (8,)
+[INFO: checkpoint.py: 201]: res2_0_branch2b_bn_rm: (64,) => s2.pathway0_res0.branch2.b_bn.running_mean: (64,)
+[INFO: checkpoint.py: 201]: res2_2_branch2a_bn_rm: (64,) => s2.pathway0_res2.branch2.a_bn.running_mean: (64,)
+[INFO: checkpoint.py: 201]: t_res3_0_branch2a_bn_riv: (16,) => s3.pathway1_res0.branch2.a_bn.running_var: (16,)
+[INFO: checkpoint.py: 201]: t_res4_5_branch2a_bn_rm: (32,) => s4.pathway1_res5.branch2.a_bn.running_mean: (32,)
+[INFO: checkpoint.py: 201]: t_res3_0_branch2b_bn_s: (16,) => s3.pathway1_res0.branch2.b_bn.weight: (16,)
+[INFO: checkpoint.py: 201]: t_res3_2_branch2a_bn_b: (16,) => s3.pathway1_res2.branch2.a_bn.bias: (16,)
+[INFO: checkpoint.py: 201]: t_res5_2_branch2b_bn_b: (64,) => s5.pathway1_res2.branch2.b_bn.bias: (64,)
+[INFO: checkpoint.py: 201]: res5_1_branch2a_bn_rm: (512,) => s5.pathway0_res1.branch2.a_bn.running_mean: (512,)
+[INFO: checkpoint.py: 201]: t_res4_0_branch2a_bn_b: (32,) => s4.pathway1_res0.branch2.a_bn.bias: (32,)
+[INFO: checkpoint.py: 201]: res5_2_branch2b_w: (512, 512, 1, 3, 3) => s5.pathway0_res2.branch2.b.weight: (512, 512, 1, 3, 3)
+[INFO: checkpoint.py: 201]: t_res2_2_branch2a_bn_riv: (8,) => s2.pathway1_res2.branch2.a_bn.running_var: (8,)
+[INFO: checkpoint.py: 201]: t_res2_1_branch2c_bn_riv: (32,) => s2.pathway1_res1.branch2.c_bn.running_var: (32,)
+[INFO: checkpoint.py: 201]: t_res5_2_branch2b_bn_s: (64,) => s5.pathway1_res2.branch2.b_bn.weight: (64,)
+[INFO: checkpoint.py: 201]: t_res5_1_branch2a_bn_rm: (64,) => s5.pathway1_res1.branch2.a_bn.running_mean: (64,)
+[INFO: checkpoint.py: 201]: res4_0_branch2c_bn_b: (1024,) => s4.pathway0_res0.branch2.c_bn.bias: (1024,)
+[INFO: checkpoint.py: 201]: res4_2_branch2a_w: (256, 1024, 3, 1, 1) => s4.pathway0_res2.branch2.a.weight: (256, 1024, 3, 1, 1)
+[INFO: checkpoint.py: 201]: t_res3_0_branch2a_w: (16, 32, 3, 1, 1) => s3.pathway1_res0.branch2.a.weight: (16, 32, 3, 1, 1)
+[INFO: checkpoint.py: 201]: res4_0_branch2c_bn_s: (1024,) => s4.pathway0_res0.branch2.c_bn.weight: (1024,)
+[INFO: checkpoint.py: 201]: res3_3_branch2b_bn_b: (128,) => s3.pathway0_res3.branch2.b_bn.bias: (128,)
+[INFO: checkpoint.py: 201]: res5_1_branch2c_bn_riv: (2048,) => s5.pathway0_res1.branch2.c_bn.running_var: (2048,)
+[INFO: checkpoint.py: 201]: t_res3_0_branch1_w: (64, 32, 1, 1, 1) => s3.pathway1_res0.branch1.weight: (64, 32, 1, 1, 1)
+[INFO: checkpoint.py: 201]: res4_1_branch2a_bn_riv: (256,) => s4.pathway0_res1.branch2.a_bn.running_var: (256,)
+[INFO: checkpoint.py: 201]: conv1_w: (64, 3, 1, 7, 7) => s1.pathway0_stem.conv.weight: (64, 3, 1, 7, 7)
+[INFO: checkpoint.py: 201]: res2_0_branch1_bn_riv: (256,) => s2.pathway0_res0.branch1_bn.running_var: (256,)
+[INFO: checkpoint.py: 201]: res3_2_branch2c_bn_rm: (512,) => s3.pathway0_res2.branch2.c_bn.running_mean: (512,)
+[INFO: checkpoint.py: 201]: res4_4_branch2c_bn_s: (1024,) => s4.pathway0_res4.branch2.c_bn.weight: (1024,)
+[INFO: checkpoint.py: 201]: res4_1_branch2c_bn_b: (1024,) => s4.pathway0_res1.branch2.c_bn.bias: (1024,)
+[INFO: checkpoint.py: 201]: res5_0_branch2b_bn_rm: (512,) => s5.pathway0_res0.branch2.b_bn.running_mean: (512,)
+[INFO: checkpoint.py: 201]: t_res5_1_branch2c_bn_s: (256,) => s5.pathway1_res1.branch2.c_bn.weight: (256,)
+[INFO: checkpoint.py: 201]: t_res2_1_branch2c_bn_rm: (32,) => s2.pathway1_res1.branch2.c_bn.running_mean: (32,)
+[INFO: checkpoint.py: 201]: res4_4_branch2b_bn_riv: (256,) => s4.pathway0_res4.branch2.b_bn.running_var: (256,)
+[INFO: checkpoint.py: 201]: res4_1_branch2c_bn_s: (1024,) => s4.pathway0_res1.branch2.c_bn.weight: (1024,)
+[INFO: checkpoint.py: 201]: res4_1_branch2c_bn_riv: (1024,) => s4.pathway0_res1.branch2.c_bn.running_var: (1024,)
+[INFO: checkpoint.py: 201]: t_res5_1_branch2c_bn_b: (256,) => s5.pathway1_res1.branch2.c_bn.bias: (256,)
+[INFO: checkpoint.py: 201]: res4_5_branch2b_bn_rm: (256,) => s4.pathway0_res5.branch2.b_bn.running_mean: (256,)
+[INFO: checkpoint.py: 201]: t_res4_5_branch2a_w: (32, 128, 3, 1, 1) => s4.pathway1_res5.branch2.a.weight: (32, 128, 3, 1, 1)
+[INFO: checkpoint.py: 201]: t_res5_0_branch2a_bn_b: (64,) => s5.pathway1_res0.branch2.a_bn.bias: (64,)
+[INFO: checkpoint.py: 201]: res3_1_branch2b_bn_rm: (128,) => s3.pathway0_res1.branch2.b_bn.running_mean: (128,)
+[INFO: checkpoint.py: 201]: t_pool1_subsample_bn_riv: (16,) => s1_fuse.bn.running_var: (16,)
+[INFO: checkpoint.py: 201]: res4_1_branch2a_bn_rm: (256,) => s4.pathway0_res1.branch2.a_bn.running_mean: (256,)
+[INFO: checkpoint.py: 201]: t_res5_0_branch2a_bn_s: (64,) => s5.pathway1_res0.branch2.a_bn.weight: (64,)
+[INFO: checkpoint.py: 201]: res2_1_branch2c_w: (256, 64, 1, 1, 1) => s2.pathway0_res1.branch2.c.weight: (256, 64, 1, 1, 1)
+[INFO: checkpoint.py: 201]: t_res3_1_branch2b_bn_s: (16,) => s3.pathway1_res1.branch2.b_bn.weight: (16,)
+[INFO: checkpoint.py: 201]: res2_0_branch2a_bn_riv: (64,) => s2.pathway0_res0.branch2.a_bn.running_var: (64,)
+[INFO: checkpoint.py: 201]: res5_0_branch2a_bn_rm: (512,) => s5.pathway0_res0.branch2.a_bn.running_mean: (512,)
+[INFO: checkpoint.py: 201]: res3_0_branch2c_bn_riv: (512,) => s3.pathway0_res0.branch2.c_bn.running_var: (512,)
+[INFO: checkpoint.py: 201]: res3_2_branch2c_bn_s: (512,) => s3.pathway0_res2.branch2.c_bn.weight: (512,)
+[INFO: checkpoint.py: 201]: t_res3_1_branch2b_bn_b: (16,) => s3.pathway1_res1.branch2.b_bn.bias: (16,)
+[INFO: checkpoint.py: 201]: t_res3_2_branch2a_bn_s: (16,) => s3.pathway1_res2.branch2.a_bn.weight: (16,)
+[INFO: checkpoint.py: 201]: t_res4_4_branch2c_bn_s: (128,) => s4.pathway1_res4.branch2.c_bn.weight: (128,)
+[INFO: checkpoint.py: 201]: t_res2_2_branch2b_bn_riv: (8,) => s2.pathway1_res2.branch2.b_bn.running_var: (8,)
+[INFO: checkpoint.py: 201]: res5_0_branch2a_bn_b: (512,) => s5.pathway0_res0.branch2.a_bn.bias: (512,)
+[INFO: checkpoint.py: 201]: t_res4_4_branch2c_bn_b: (128,) => s4.pathway1_res4.branch2.c_bn.bias: (128,)
+[INFO: checkpoint.py: 201]: res3_1_branch2b_bn_b: (128,) => s3.pathway0_res1.branch2.b_bn.bias: (128,)
+[INFO: checkpoint.py: 201]: res3_2_branch2a_bn_s: (128,) => s3.pathway0_res2.branch2.a_bn.weight: (128,)
+[INFO: checkpoint.py: 201]: t_res4_1_branch2a_bn_rm: (32,) => s4.pathway1_res1.branch2.a_bn.running_mean: (32,)
+[INFO: checkpoint.py: 201]: res5_0_branch2a_bn_s: (512,) => s5.pathway0_res0.branch2.a_bn.weight: (512,)
+[INFO: checkpoint.py: 201]: t_res5_2_branch2c_bn_b: (256,) => s5.pathway1_res2.branch2.c_bn.bias: (256,)
+[INFO: checkpoint.py: 201]: t_res4_0_branch2b_bn_rm: (32,) => s4.pathway1_res0.branch2.b_bn.running_mean: (32,)
+[INFO: checkpoint.py: 201]: t_res4_0_branch1_w: (128, 64, 1, 1, 1) => s4.pathway1_res0.branch1.weight: (128, 64, 1, 1, 1)
+[INFO: checkpoint.py: 201]: res4_0_branch2b_bn_s: (256,) => s4.pathway0_res0.branch2.b_bn.weight: (256,)
+[INFO: checkpoint.py: 201]: res4_2_branch2a_bn_b: (256,) => s4.pathway0_res2.branch2.a_bn.bias: (256,)
+[INFO: checkpoint.py: 201]: res5_2_branch2b_bn_s: (512,) => s5.pathway0_res2.branch2.b_bn.weight: (512,)
+[INFO: checkpoint.py: 201]: res4_3_branch2c_bn_s: (1024,) => s4.pathway0_res3.branch2.c_bn.weight: (1024,)
+[INFO: checkpoint.py: 201]: res4_2_branch2a_bn_s: (256,) => s4.pathway0_res2.branch2.a_bn.weight: (256,)
+[INFO: checkpoint.py: 201]: res5_2_branch2b_bn_b: (512,) => s5.pathway0_res2.branch2.b_bn.bias: (512,)
+[INFO: checkpoint.py: 201]: t_res2_0_branch1_bn_rm: (32,) => s2.pathway1_res0.branch1_bn.running_mean: (32,)
+[INFO: checkpoint.py: 201]: res3_1_branch2a_w: (128, 512, 1, 1, 1) => s3.pathway0_res1.branch2.a.weight: (128, 512, 1, 1, 1)
+[INFO: checkpoint.py: 201]: res4_3_branch2c_bn_b: (1024,) => s4.pathway0_res3.branch2.c_bn.bias: (1024,)
+[INFO: checkpoint.py: 201]: res3_0_branch2b_bn_rm: (128,) => s3.pathway0_res0.branch2.b_bn.running_mean: (128,)
+[INFO: checkpoint.py: 201]: res5_0_branch2b_bn_b: (512,) => s5.pathway0_res0.branch2.b_bn.bias: (512,)
+[INFO: checkpoint.py: 201]: res5_2_branch2a_bn_b: (512,) => s5.pathway0_res2.branch2.a_bn.bias: (512,)
+[INFO: checkpoint.py: 201]: t_res5_0_branch1_bn_riv: (256,) => s5.pathway1_res0.branch1_bn.running_var: (256,)
+[INFO: checkpoint.py: 201]: t_res3_0_branch1_bn_b: (64,) => s3.pathway1_res0.branch1_bn.bias: (64,)
+[INFO: checkpoint.py: 201]: t_res4_1_branch2c_bn_b: (128,) => s4.pathway1_res1.branch2.c_bn.bias: (128,)
+[INFO: checkpoint.py: 201]: res3_3_branch2a_bn_b: (128,) => s3.pathway0_res3.branch2.a_bn.bias: (128,)
+[INFO: checkpoint.py: 201]: t_res4_0_branch2c_w: (128, 32, 1, 1, 1) => s4.pathway1_res0.branch2.c.weight: (128, 32, 1, 1, 1)
+[INFO: checkpoint.py: 201]: res5_2_branch2a_bn_s: (512,) => s5.pathway0_res2.branch2.a_bn.weight: (512,)
+[INFO: checkpoint.py: 201]: t_res3_0_branch1_bn_s: (64,) => s3.pathway1_res0.branch1_bn.weight: (64,)
+[INFO: checkpoint.py: 201]: t_res4_1_branch2c_bn_s: (128,) => s4.pathway1_res1.branch2.c_bn.weight: (128,)
+[INFO: checkpoint.py: 201]: res2_0_branch1_bn_b: (256,) => s2.pathway0_res0.branch1_bn.bias: (256,)
+[INFO: checkpoint.py: 201]: res4_1_branch2b_bn_riv: (256,) => s4.pathway0_res1.branch2.b_bn.running_var: (256,)
+[INFO: checkpoint.py: 201]: res4_0_branch2b_bn_rm: (256,) => s4.pathway0_res0.branch2.b_bn.running_mean: (256,)
+[INFO: checkpoint.py: 201]: res4_0_branch1_bn_s: (1024,) => s4.pathway0_res0.branch1_bn.weight: (1024,)
+[INFO: checkpoint.py: 201]: t_res3_2_branch2c_w: (64, 16, 1, 1, 1) => s3.pathway1_res2.branch2.c.weight: (64, 16, 1, 1, 1)
+[INFO: checkpoint.py: 201]: res4_2_branch2a_bn_rm: (256,) => s4.pathway0_res2.branch2.a_bn.running_mean: (256,)
+[INFO: checkpoint.py: 201]: t_res4_0_branch1_bn_b: (128,) => s4.pathway1_res0.branch1_bn.bias: (128,)
+[INFO: checkpoint.py: 201]: res2_0_branch2b_w: (64, 64, 1, 3, 3) => s2.pathway0_res0.branch2.b.weight: (64, 64, 1, 3, 3)
+[INFO: checkpoint.py: 201]: t_res5_0_branch2c_w: (256, 64, 1, 1, 1) => s5.pathway1_res0.branch2.c.weight: (256, 64, 1, 1, 1)
+[INFO: checkpoint.py: 201]: res4_0_branch1_bn_b: (1024,) => s4.pathway0_res0.branch1_bn.bias: (1024,)
+[INFO: checkpoint.py: 201]: res4_1_branch2c_bn_rm: (1024,) => s4.pathway0_res1.branch2.c_bn.running_mean: (1024,)
+[INFO: checkpoint.py: 201]: t_res4_2_branch2b_bn_riv: (32,) => s4.pathway1_res2.branch2.b_bn.running_var: (32,)
+[INFO: checkpoint.py: 201]: res4_3_branch2a_bn_rm: (256,) => s4.pathway0_res3.branch2.a_bn.running_mean: (256,)
+[INFO: checkpoint.py: 201]: t_res5_0_branch2b_bn_b: (64,) => s5.pathway1_res0.branch2.b_bn.bias: (64,)
+[INFO: checkpoint.py: 201]: t_res4_1_branch2a_w: (32, 128, 3, 1, 1) => s4.pathway1_res1.branch2.a.weight: (32, 128, 3, 1, 1)
+[INFO: checkpoint.py: 201]: res4_2_branch2b_w: (256, 256, 1, 3, 3) => s4.pathway0_res2.branch2.b.weight: (256, 256, 1, 3, 3)
+[INFO: checkpoint.py: 201]: res3_1_branch2c_w: (512, 128, 1, 1, 1) => s3.pathway0_res1.branch2.c.weight: (512, 128, 1, 1, 1)
+[INFO: checkpoint.py: 201]: res3_0_branch1_bn_s: (512,) => s3.pathway0_res0.branch1_bn.weight: (512,)
+[INFO: checkpoint.py: 201]: t_res3_1_branch2b_w: (16, 16, 1, 3, 3) => s3.pathway1_res1.branch2.b.weight: (16, 16, 1, 3, 3)
+[INFO: checkpoint.py: 201]: t_res5_0_branch2a_w: (64, 128, 3, 1, 1) => s5.pathway1_res0.branch2.a.weight: (64, 128, 3, 1, 1)
+[INFO: checkpoint.py: 201]: t_res5_2_branch2a_bn_rm: (64,) => s5.pathway1_res2.branch2.a_bn.running_mean: (64,)
+[INFO: checkpoint.py: 201]: t_res4_1_branch2c_w: (128, 32, 1, 1, 1) => s4.pathway1_res1.branch2.c.weight: (128, 32, 1, 1, 1)
+[INFO: checkpoint.py: 201]: t_res3_2_branch2c_bn_s: (64,) => s3.pathway1_res2.branch2.c_bn.weight: (64,)
+[INFO: checkpoint.py: 201]: res4_1_branch2b_bn_rm: (256,) => s4.pathway0_res1.branch2.b_bn.running_mean: (256,)
+[INFO: checkpoint.py: 201]: res3_3_branch2b_bn_rm: (128,) => s3.pathway0_res3.branch2.b_bn.running_mean: (128,)
+[INFO: checkpoint.py: 201]: res4_0_branch2b_bn_b: (256,) => s4.pathway0_res0.branch2.b_bn.bias: (256,)
+[INFO: checkpoint.py: 201]: t_res3_2_branch2c_bn_b: (64,) => s3.pathway1_res2.branch2.c_bn.bias: (64,)
+[INFO: checkpoint.py: 201]: t_res5_1_branch2a_bn_riv: (64,) => s5.pathway1_res1.branch2.a_bn.running_var: (64,)
+[INFO: checkpoint.py: 201]: res3_1_branch2c_bn_riv: (512,) => s3.pathway0_res1.branch2.c_bn.running_var: (512,)
+[INFO: checkpoint.py: 201]: res3_0_branch2c_bn_b: (512,) => s3.pathway0_res0.branch2.c_bn.bias: (512,)
+[INFO: checkpoint.py: 201]: res3_0_branch2a_bn_rm: (128,) => s3.pathway0_res0.branch2.a_bn.running_mean: (128,)
+[INFO: checkpoint.py: 201]: res5_0_branch2c_bn_s: (2048,) => s5.pathway0_res0.branch2.c_bn.weight: (2048,)
+[INFO: checkpoint.py: 201]: t_res5_1_branch2a_bn_b: (64,) => s5.pathway1_res1.branch2.a_bn.bias: (64,)
+[INFO: checkpoint.py: 201]: res4_2_branch2b_bn_rm: (256,) => s4.pathway0_res2.branch2.b_bn.running_mean: (256,)
+[INFO: checkpoint.py: 201]: res5_2_branch2c_w: (2048, 512, 1, 1, 1) => s5.pathway0_res2.branch2.c.weight: (2048, 512, 1, 1, 1)
+[INFO: checkpoint.py: 201]: res3_0_branch2c_bn_s: (512,) => s3.pathway0_res0.branch2.c_bn.weight: (512,)
+[INFO: checkpoint.py: 201]: res2_0_branch2a_w: (64, 80, 1, 1, 1) => s2.pathway0_res0.branch2.a.weight: (64, 80, 1, 1, 1)
+[INFO: checkpoint.py: 201]: t_res5_1_branch2a_bn_s: (64,) => s5.pathway1_res1.branch2.a_bn.weight: (64,)
+[INFO: checkpoint.py: 201]: res4_3_branch2a_bn_riv: (256,) => s4.pathway0_res3.branch2.a_bn.running_var: (256,)
+[INFO: checkpoint.py: 201]: t_res3_1_branch2c_bn_s: (64,) => s3.pathway1_res1.branch2.c_bn.weight: (64,)
+[INFO: checkpoint.py: 201]: t_res5_2_branch2c_bn_s: (256,) => s5.pathway1_res2.branch2.c_bn.weight: (256,)
+[INFO: checkpoint.py: 201]: t_res4_4_branch2a_w: (32, 128, 3, 1, 1) => s4.pathway1_res4.branch2.a.weight: (32, 128, 3, 1, 1)
+[INFO: checkpoint.py: 201]: t_res3_1_branch2c_bn_b: (64,) => s3.pathway1_res1.branch2.c_bn.bias: (64,)
+[INFO: checkpoint.py: 201]: t_res4_3_branch2c_w: (128, 32, 1, 1, 1) => s4.pathway1_res3.branch2.c.weight: (128, 32, 1, 1, 1)
+[INFO: checkpoint.py: 201]: t_res4_0_branch2b_w: (32, 32, 1, 3, 3) => s4.pathway1_res0.branch2.b.weight: (32, 32, 1, 3, 3)
+[INFO: checkpoint.py: 201]: res2_2_branch2c_w: (256, 64, 1, 1, 1) => s2.pathway0_res2.branch2.c.weight: (256, 64, 1, 1, 1)
+[INFO: checkpoint.py: 201]: t_res5_2_branch2a_bn_riv: (64,) => s5.pathway1_res2.branch2.a_bn.running_var: (64,)
+[INFO: checkpoint.py: 201]: t_res4_0_branch2b_bn_b: (32,) => s4.pathway1_res0.branch2.b_bn.bias: (32,)
+[INFO: checkpoint.py: 201]: t_res4_0_branch2c_bn_riv: (128,) => s4.pathway1_res0.branch2.c_bn.running_var: (128,)
+[INFO: checkpoint.py: 201]: t_res4_0_branch2b_bn_s: (32,) => s4.pathway1_res0.branch2.b_bn.weight: (32,)
+[INFO: checkpoint.py: 201]: t_res3_0_branch2b_w: (16, 16, 1, 3, 3) => s3.pathway1_res0.branch2.b.weight: (16, 16, 1, 3, 3)
+[INFO: checkpoint.py: 201]: t_res4_3_branch2a_w: (32, 128, 3, 1, 1) => s4.pathway1_res3.branch2.a.weight: (32, 128, 3, 1, 1)
+[INFO: checkpoint.py: 201]: res3_0_branch2b_bn_riv: (128,) => s3.pathway0_res0.branch2.b_bn.running_var: (128,)
+[INFO: checkpoint.py: 201]: res3_0_branch2a_w: (128, 320, 1, 1, 1) => s3.pathway0_res0.branch2.a.weight: (128, 320, 1, 1, 1)
+[INFO: checkpoint.py: 201]: res2_0_branch2a_bn_s: (64,) => s2.pathway0_res0.branch2.a_bn.weight: (64,)
+[INFO: checkpoint.py: 201]: t_res3_1_branch2c_bn_rm: (64,) => s3.pathway1_res1.branch2.c_bn.running_mean: (64,)
+[INFO: checkpoint.py: 201]: t_res_conv1_bn_b: (8,) => s1.pathway1_stem.bn.bias: (8,)
+[INFO: checkpoint.py: 201]: res4_3_branch2a_bn_b: (256,) => s4.pathway0_res3.branch2.a_bn.bias: (256,)
+[INFO: checkpoint.py: 201]: res2_1_branch2a_bn_s: (64,) => s2.pathway0_res1.branch2.a_bn.weight: (64,)
+[INFO: checkpoint.py: 201]: res3_0_branch2c_bn_rm: (512,) => s3.pathway0_res0.branch2.c_bn.running_mean: (512,)
+[INFO: checkpoint.py: 201]: t_res2_1_branch2b_bn_s: (8,) => s2.pathway1_res1.branch2.b_bn.weight: (8,)
+[INFO: checkpoint.py: 201]: res3_2_branch2c_bn_b: (512,) => s3.pathway0_res2.branch2.c_bn.bias: (512,)
+[INFO: checkpoint.py: 201]: res2_0_branch2a_bn_b: (64,) => s2.pathway0_res0.branch2.a_bn.bias: (64,)
+[INFO: checkpoint.py: 201]: res4_1_branch2b_bn_s: (256,) => s4.pathway0_res1.branch2.b_bn.weight: (256,)
+[INFO: checkpoint.py: 201]: t_res3_2_branch2b_w: (16, 16, 1, 3, 3) => s3.pathway1_res2.branch2.b.weight: (16, 16, 1, 3, 3)
+[INFO: checkpoint.py: 201]: t_res_conv1_bn_s: (8,) => s1.pathway1_stem.bn.weight: (8,)
+[INFO: checkpoint.py: 201]: t_res2_0_branch2b_bn_rm: (8,) => s2.pathway1_res0.branch2.b_bn.running_mean: (8,)
+[INFO: checkpoint.py: 201]: res2_1_branch2a_bn_b: (64,) => s2.pathway0_res1.branch2.a_bn.bias: (64,)
+[INFO: checkpoint.py: 201]: res4_2_branch2c_w: (1024, 256, 1, 1, 1) => s4.pathway0_res2.branch2.c.weight: (1024, 256, 1, 1, 1)
+[INFO: checkpoint.py: 201]: res3_1_branch2b_w: (128, 128, 1, 3, 3) => s3.pathway0_res1.branch2.b.weight: (128, 128, 1, 3, 3)
+[INFO: checkpoint.py: 201]: res3_1_branch2a_bn_rm: (128,) => s3.pathway0_res1.branch2.a_bn.running_mean: (128,)
+[INFO: checkpoint.py: 201]: res3_3_branch2c_w: (512, 128, 1, 1, 1) => s3.pathway0_res3.branch2.c.weight: (512, 128, 1, 1, 1)
+[INFO: checkpoint.py: 201]: t_res4_1_branch2a_bn_riv: (32,) => s4.pathway1_res1.branch2.a_bn.running_var: (32,)
+[INFO: checkpoint.py: 201]: t_res4_4_branch2b_w: (32, 32, 1, 3, 3) => s4.pathway1_res4.branch2.b.weight: (32, 32, 1, 3, 3)
+[INFO: checkpoint.py: 201]: res2_0_branch2a_bn_rm: (64,) => s2.pathway0_res0.branch2.a_bn.running_mean: (64,)
+[INFO: checkpoint.py: 201]: res2_0_branch2b_bn_b: (64,) => s2.pathway0_res0.branch2.b_bn.bias: (64,)
+[INFO: checkpoint.py: 201]: res4_0_branch2a_bn_s: (256,) => s4.pathway0_res0.branch2.a_bn.weight: (256,)
+[INFO: checkpoint.py: 201]: res3_3_branch2a_w: (128, 512, 1, 1, 1) => s3.pathway0_res3.branch2.a.weight: (128, 512, 1, 1, 1)
+[INFO: checkpoint.py: 201]: t_res4_4_branch2c_w: (128, 32, 1, 1, 1) => s4.pathway1_res4.branch2.c.weight: (128, 32, 1, 1, 1)
+[INFO: checkpoint.py: 201]: res3_1_branch2b_bn_riv: (128,) => s3.pathway0_res1.branch2.b_bn.running_var: (128,)
+[INFO: checkpoint.py: 201]: res2_0_branch2b_bn_s: (64,) => s2.pathway0_res0.branch2.b_bn.weight: (64,)
+[INFO: checkpoint.py: 201]: res4_0_branch2a_bn_b: (256,) => s4.pathway0_res0.branch2.a_bn.bias: (256,)
+[INFO: checkpoint.py: 201]: t_res5_0_branch2c_bn_s: (256,) => s5.pathway1_res0.branch2.c_bn.weight: (256,)
+[INFO: checkpoint.py: 201]: t_res4_5_branch2c_bn_rm: (128,) => s4.pathway1_res5.branch2.c_bn.running_mean: (128,)
+[INFO: checkpoint.py: 201]: t_res3_3_branch2c_bn_subsample_w: (128, 64, 7, 1, 1) => s3_fuse.conv_f2s.weight: (128, 64, 7, 1, 1)
+[INFO: checkpoint.py: 201]: res2_0_branch2c_bn_b: (256,) => s2.pathway0_res0.branch2.c_bn.bias: (256,)
+[INFO: checkpoint.py: 201]: t_res2_2_branch2c_bn_rm: (32,) => s2.pathway1_res2.branch2.c_bn.running_mean: (32,)
+[INFO: checkpoint.py: 201]: res5_0_branch2b_bn_s: (512,) => s5.pathway0_res0.branch2.b_bn.weight: (512,)
+[INFO: checkpoint.py: 201]: t_res5_0_branch2a_bn_rm: (64,) => s5.pathway1_res0.branch2.a_bn.running_mean: (64,)
+[INFO: checkpoint.py: 201]: res5_2_branch2c_bn_rm: (2048,) => s5.pathway0_res2.branch2.c_bn.running_mean: (2048,)
+[INFO: checkpoint.py: 201]: res2_0_branch2c_bn_s: (256,) => s2.pathway0_res0.branch2.c_bn.weight: (256,)
+[INFO: checkpoint.py: 201]: res4_3_branch2b_w: (256, 256, 1, 3, 3) => s4.pathway0_res3.branch2.b.weight: (256, 256, 1, 3, 3)
+[INFO: checkpoint.py: 201]: t_res5_0_branch2a_bn_riv: (64,) => s5.pathway1_res0.branch2.a_bn.running_var: (64,)
+[INFO: checkpoint.py: 201]: res3_0_branch2b_bn_b: (128,) => s3.pathway0_res0.branch2.b_bn.bias: (128,)
+[INFO: checkpoint.py: 201]: t_res3_1_branch2c_bn_riv: (64,) => s3.pathway1_res1.branch2.c_bn.running_var: (64,)
+[INFO: checkpoint.py: 201]: res4_1_branch2b_bn_b: (256,) => s4.pathway0_res1.branch2.b_bn.bias: (256,)
+[INFO: checkpoint.py: 201]: res4_0_branch2a_bn_rm: (256,) => s4.pathway0_res0.branch2.a_bn.running_mean: (256,)
+[INFO: checkpoint.py: 201]: t_res5_0_branch2c_bn_b: (256,) => s5.pathway1_res0.branch2.c_bn.bias: (256,)
+[INFO: checkpoint.py: 201]: res2_1_branch2c_bn_rm: (256,) => s2.pathway0_res1.branch2.c_bn.running_mean: (256,)
+[INFO: checkpoint.py: 201]: res3_0_branch2b_bn_s: (128,) => s3.pathway0_res0.branch2.b_bn.weight: (128,)
+[INFO: checkpoint.py: 201]: t_res3_3_branch2b_w: (16, 16, 1, 3, 3) => s3.pathway1_res3.branch2.b.weight: (16, 16, 1, 3, 3)
+[INFO: checkpoint.py: 201]: t_res4_0_branch2a_bn_rm: (32,) => s4.pathway1_res0.branch2.a_bn.running_mean: (32,)
+[INFO: checkpoint.py: 201]: t_res3_3_branch2c_bn_rm: (64,) => s3.pathway1_res3.branch2.c_bn.running_mean: (64,)
+[INFO: checkpoint.py: 201]: t_res4_3_branch2c_bn_b: (128,) => s4.pathway1_res3.branch2.c_bn.bias: (128,)
+[INFO: checkpoint.py: 201]: t_res4_2_branch2a_bn_s: (32,) => s4.pathway1_res2.branch2.a_bn.weight: (32,)
+[INFO: checkpoint.py: 201]: res4_5_branch2c_bn_rm: (1024,) => s4.pathway0_res5.branch2.c_bn.running_mean: (1024,)
+[INFO: checkpoint.py: 201]: t_res4_2_branch2a_bn_b: (32,) => s4.pathway1_res2.branch2.a_bn.bias: (32,)
+[INFO: checkpoint.py: 201]: res_conv1_bn_riv: (64,) => s1.pathway0_stem.bn.running_var: (64,)
+[INFO: checkpoint.py: 201]: t_res5_0_branch1_bn_b: (256,) => s5.pathway1_res0.branch1_bn.bias: (256,)
+[INFO: checkpoint.py: 201]: t_res4_4_branch2c_bn_riv: (128,) => s4.pathway1_res4.branch2.c_bn.running_var: (128,)
+[INFO: checkpoint.py: 201]: t_res4_0_branch2a_w: (32, 64, 3, 1, 1) => s4.pathway1_res0.branch2.a.weight: (32, 64, 3, 1, 1)
+[INFO: checkpoint.py: 201]: t_res4_5_branch2c_bn_riv: (128,) => s4.pathway1_res5.branch2.c_bn.running_var: (128,)
+[INFO: checkpoint.py: 201]: res4_4_branch2a_bn_riv: (256,) => s4.pathway0_res4.branch2.a_bn.running_var: (256,)
+[INFO: checkpoint.py: 201]: t_res2_1_branch2a_bn_riv: (8,) => s2.pathway1_res1.branch2.a_bn.running_var: (8,)
+[INFO: checkpoint.py: 201]: t_res5_1_branch2c_w: (256, 64, 1, 1, 1) => s5.pathway1_res1.branch2.c.weight: (256, 64, 1, 1, 1)
+[INFO: checkpoint.py: 201]: res5_1_branch2b_bn_riv: (512,) => s5.pathway0_res1.branch2.b_bn.running_var: (512,)
+[INFO: checkpoint.py: 201]: t_res2_0_branch2c_bn_rm: (32,) => s2.pathway1_res0.branch2.c_bn.running_mean: (32,)
+[INFO: checkpoint.py: 201]: t_res3_3_branch2c_bn_subsample_bn_riv: (128,) => s3_fuse.bn.running_var: (128,)
+[INFO: checkpoint.py: 201]: res5_2_branch2c_bn_s: (2048,) => s5.pathway0_res2.branch2.c_bn.weight: (2048,)
+[INFO: checkpoint.py: 201]: t_res3_3_branch2a_bn_b: (16,) => s3.pathway1_res3.branch2.a_bn.bias: (16,)
+[INFO: checkpoint.py: 201]: res2_0_branch2c_w: (256, 64, 1, 1, 1) => s2.pathway0_res0.branch2.c.weight: (256, 64, 1, 1, 1)
+[INFO: checkpoint.py: 201]: res5_2_branch2c_bn_b: (2048,) => s5.pathway0_res2.branch2.c_bn.bias: (2048,)
+[INFO: checkpoint.py: 201]: t_res4_5_branch2a_bn_b: (32,) => s4.pathway1_res5.branch2.a_bn.bias: (32,)
+[INFO: checkpoint.py: 201]: t_res5_0_branch2b_w: (64, 64, 1, 3, 3) => s5.pathway1_res0.branch2.b.weight: (64, 64, 1, 3, 3)
+[INFO: checkpoint.py: 201]: t_res4_5_branch2c_w: (128, 32, 1, 1, 1) => s4.pathway1_res5.branch2.c.weight: (128, 32, 1, 1, 1)
+[INFO: checkpoint.py: 201]: t_res2_2_branch2a_bn_s: (8,) => s2.pathway1_res2.branch2.a_bn.weight: (8,)
+[INFO: checkpoint.py: 201]: res4_3_branch2a_bn_s: (256,) => s4.pathway0_res3.branch2.a_bn.weight: (256,)
+[INFO: checkpoint.py: 201]: res4_3_branch2b_bn_riv: (256,) => s4.pathway0_res3.branch2.b_bn.running_var: (256,)
+[INFO: checkpoint.py: 201]: res4_2_branch2c_bn_riv: (1024,) => s4.pathway0_res2.branch2.c_bn.running_var: (1024,)
+[INFO: checkpoint.py: 201]: res4_1_branch2b_w: (256, 256, 1, 3, 3) => s4.pathway0_res1.branch2.b.weight: (256, 256, 1, 3, 3)
+[INFO: checkpoint.py: 201]: t_res5_2_branch2b_bn_rm: (64,) => s5.pathway1_res2.branch2.b_bn.running_mean: (64,)
+[INFO: checkpoint.py: 201]: res2_1_branch2a_w: (64, 256, 1, 1, 1) => s2.pathway0_res1.branch2.a.weight: (64, 256, 1, 1, 1)
+[INFO: checkpoint.py: 201]: res4_0_branch1_w: (1024, 640, 1, 1, 1) => s4.pathway0_res0.branch1.weight: (1024, 640, 1, 1, 1)
+[INFO: checkpoint.py: 201]: t_res4_2_branch2b_bn_b: (32,) => s4.pathway1_res2.branch2.b_bn.bias: (32,)
+[INFO: checkpoint.py: 201]: t_res4_2_branch2b_w: (32, 32, 1, 3, 3) => s4.pathway1_res2.branch2.b.weight: (32, 32, 1, 3, 3)
+[INFO: checkpoint.py: 201]: t_res_conv1_bn_riv: (8,) => s1.pathway1_stem.bn.running_var: (8,)
+[INFO: checkpoint.py: 201]: t_res3_3_branch2b_bn_s: (16,) => s3.pathway1_res3.branch2.b_bn.weight: (16,)
+[INFO: checkpoint.py: 201]: t_res4_2_branch2b_bn_s: (32,) => s4.pathway1_res2.branch2.b_bn.weight: (32,)
+[INFO: checkpoint.py: 201]: res3_3_branch2c_bn_rm: (512,) => s3.pathway0_res3.branch2.c_bn.running_mean: (512,)
+[INFO: checkpoint.py: 201]: t_res4_0_branch2a_bn_riv: (32,) => s4.pathway1_res0.branch2.a_bn.running_var: (32,)
+[INFO: checkpoint.py: 201]: res3_2_branch2b_bn_riv: (128,) => s3.pathway0_res2.branch2.b_bn.running_var: (128,)
+[INFO: checkpoint.py: 201]: t_res3_3_branch2b_bn_b: (16,) => s3.pathway1_res3.branch2.b_bn.bias: (16,)
+[INFO: checkpoint.py: 201]: t_res2_0_branch2b_w: (8, 8, 1, 3, 3) => s2.pathway1_res0.branch2.b.weight: (8, 8, 1, 3, 3)
+[INFO: checkpoint.py: 201]: res3_3_branch2a_bn_rm: (128,) => s3.pathway0_res3.branch2.a_bn.running_mean: (128,)
+[INFO: checkpoint.py: 201]: res5_0_branch1_bn_riv: (2048,) => s5.pathway0_res0.branch1_bn.running_var: (2048,)
+[INFO: checkpoint.py: 201]: res4_4_branch2c_bn_riv: (1024,) => s4.pathway0_res4.branch2.c_bn.running_var: (1024,)
+[INFO: checkpoint.py: 201]: t_res4_1_branch2b_bn_rm: (32,) => s4.pathway1_res1.branch2.b_bn.running_mean: (32,)
+[INFO: checkpoint.py: 201]: res2_2_branch2b_bn_s: (64,) => s2.pathway0_res2.branch2.b_bn.weight: (64,)
+[INFO: checkpoint.py: 201]: res_conv1_bn_rm: (64,) => s1.pathway0_stem.bn.running_mean: (64,)
+[INFO: checkpoint.py: 201]: res3_2_branch2b_bn_rm: (128,) => s3.pathway0_res2.branch2.b_bn.running_mean: (128,)
+[INFO: checkpoint.py: 201]: res2_2_branch2b_bn_b: (64,) => s2.pathway0_res2.branch2.b_bn.bias: (64,)
+[INFO: checkpoint.py: 201]: res2_2_branch2c_bn_s: (256,) => s2.pathway0_res2.branch2.c_bn.weight: (256,)
+[INFO: checkpoint.py: 201]: t_res4_1_branch2c_bn_rm: (128,) => s4.pathway1_res1.branch2.c_bn.running_mean: (128,)
+[INFO: checkpoint.py: 201]: t_conv1_w: (8, 3, 5, 7, 7) => s1.pathway1_stem.conv.weight: (8, 3, 5, 7, 7)
+[INFO: checkpoint.py: 201]: res4_0_branch1_bn_rm: (1024,) => s4.pathway0_res0.branch1_bn.running_mean: (1024,)
+[INFO: checkpoint.py: 201]: res4_0_branch1_bn_riv: (1024,) => s4.pathway0_res0.branch1_bn.running_var: (1024,)
+[INFO: checkpoint.py: 201]: res5_0_branch1_bn_s: (2048,) => s5.pathway0_res0.branch1_bn.weight: (2048,)
+[INFO: checkpoint.py: 201]: res4_0_branch2c_w: (1024, 256, 1, 1, 1) => s4.pathway0_res0.branch2.c.weight: (1024, 256, 1, 1, 1)
+[INFO: checkpoint.py: 201]: res2_1_branch2b_bn_b: (64,) => s2.pathway0_res1.branch2.b_bn.bias: (64,)
+[INFO: checkpoint.py: 201]: res5_0_branch2c_bn_rm: (2048,) => s5.pathway0_res0.branch2.c_bn.running_mean: (2048,)
+[INFO: checkpoint.py: 201]: res5_0_branch1_bn_b: (2048,) => s5.pathway0_res0.branch1_bn.bias: (2048,)
+[INFO: checkpoint.py: 201]: res4_0_branch2a_w: (256, 640, 3, 1, 1) => s4.pathway0_res0.branch2.a.weight: (256, 640, 3, 1, 1)
+[INFO: checkpoint.py: 201]: res4_4_branch2c_bn_rm: (1024,) => s4.pathway0_res4.branch2.c_bn.running_mean: (1024,)
+[INFO: checkpoint.py: 201]: res2_1_branch2b_bn_s: (64,) => s2.pathway0_res1.branch2.b_bn.weight: (64,)
+[INFO: checkpoint.py: 201]: t_res5_0_branch2c_bn_rm: (256,) => s5.pathway1_res0.branch2.c_bn.running_mean: (256,)
+[INFO: checkpoint.py: 201]: t_res3_1_branch2a_bn_rm: (16,) => s3.pathway1_res1.branch2.a_bn.running_mean: (16,)
+[INFO: checkpoint.py: 201]: t_res4_3_branch2b_w: (32, 32, 1, 3, 3) => s4.pathway1_res3.branch2.b.weight: (32, 32, 1, 3, 3)
+[INFO: checkpoint.py: 201]: res3_0_branch1_bn_riv: (512,) => s3.pathway0_res0.branch1_bn.running_var: (512,)
+[INFO: checkpoint.py: 201]: t_res2_2_branch2a_bn_b: (8,) => s2.pathway1_res2.branch2.a_bn.bias: (8,)
+[INFO: checkpoint.py: 201]: res4_3_branch2c_w: (1024, 256, 1, 1, 1) => s4.pathway0_res3.branch2.c.weight: (1024, 256, 1, 1, 1)
+[INFO: checkpoint.py: 201]: t_res5_0_branch2b_bn_s: (64,) => s5.pathway1_res0.branch2.b_bn.weight: (64,)
+[INFO: checkpoint.py: 201]: t_res5_1_branch2b_bn_rm: (64,) => s5.pathway1_res1.branch2.b_bn.running_mean: (64,)
+[INFO: checkpoint.py: 201]: t_res4_3_branch2b_bn_s: (32,) => s4.pathway1_res3.branch2.b_bn.weight: (32,)
+[INFO: checkpoint.py: 201]: t_pool1_subsample_bn_s: (16,) => s1_fuse.bn.weight: (16,)
+[INFO: checkpoint.py: 201]: t_res2_2_branch2b_bn_s: (8,) => s2.pathway1_res2.branch2.b_bn.weight: (8,)
+[INFO: checkpoint.py: 201]: res2_1_branch2b_w: (64, 64, 1, 3, 3) => s2.pathway0_res1.branch2.b.weight: (64, 64, 1, 3, 3)
+[INFO: checkpoint.py: 201]: t_res5_1_branch2c_bn_rm: (256,) => s5.pathway1_res1.branch2.c_bn.running_mean: (256,)
+[INFO: checkpoint.py: 201]: res3_2_branch2a_bn_riv: (128,) => s3.pathway0_res2.branch2.a_bn.running_var: (128,)
+[INFO: checkpoint.py: 201]: t_res4_3_branch2b_bn_b: (32,) => s4.pathway1_res3.branch2.b_bn.bias: (32,)
+[INFO: checkpoint.py: 201]: t_pool1_subsample_bn_b: (16,) => s1_fuse.bn.bias: (16,)
+[INFO: checkpoint.py: 201]: t_res4_0_branch1_bn_s: (128,) => s4.pathway1_res0.branch1_bn.weight: (128,)
+[INFO: checkpoint.py: 201]: t_res4_4_branch2b_bn_riv: (32,) => s4.pathway1_res4.branch2.b_bn.running_var: (32,)
+[INFO: checkpoint.py: 201]: t_res3_0_branch1_bn_rm: (64,) => s3.pathway1_res0.branch1_bn.running_mean: (64,)
+[INFO: checkpoint.py: 201]: t_res3_0_branch2a_bn_rm: (16,) => s3.pathway1_res0.branch2.a_bn.running_mean: (16,)
+[INFO: checkpoint.py: 201]: t_res4_3_branch2c_bn_riv: (128,) => s4.pathway1_res3.branch2.c_bn.running_var: (128,)
+[INFO: checkpoint.py: 201]: res2_2_branch2c_bn_rm: (256,) => s2.pathway0_res2.branch2.c_bn.running_mean: (256,)
+[INFO: checkpoint.py: 210]: !! pred_b: (400,) does not match head.projection.bias: (3,)
+[INFO: checkpoint.py: 201]: res3_3_branch2b_w: (128, 128, 1, 3, 3) => s3.pathway0_res3.branch2.b.weight: (128, 128, 1, 3, 3)
+[INFO: checkpoint.py: 201]: t_res3_2_branch2a_w: (16, 64, 3, 1, 1) => s3.pathway1_res2.branch2.a.weight: (16, 64, 3, 1, 1)
+[INFO: checkpoint.py: 201]: t_res4_2_branch2c_bn_s: (128,) => s4.pathway1_res2.branch2.c_bn.weight: (128,)
+[INFO: checkpoint.py: 201]: res2_1_branch2b_bn_riv: (64,) => s2.pathway0_res1.branch2.b_bn.running_var: (64,)
+[INFO: checkpoint.py: 210]: !! pred_w: (400, 2304) does not match head.projection.weight: (3, 2304)
+[INFO: checkpoint.py: 201]: res4_3_branch2a_w: (256, 1024, 3, 1, 1) => s4.pathway0_res3.branch2.a.weight: (256, 1024, 3, 1, 1)
+[INFO: checkpoint.py: 201]: t_res2_2_branch2c_bn_subsample_bn_riv: (64,) => s2_fuse.bn.running_var: (64,)
+[INFO: checkpoint.py: 201]: t_res3_3_branch2a_w: (16, 64, 3, 1, 1) => s3.pathway1_res3.branch2.a.weight: (16, 64, 3, 1, 1)
+[INFO: checkpoint.py: 201]: t_res3_1_branch2b_bn_riv: (16,) => s3.pathway1_res1.branch2.b_bn.running_var: (16,)
+[INFO: checkpoint.py: 201]: res4_1_branch2a_w: (256, 1024, 3, 1, 1) => s4.pathway0_res1.branch2.a.weight: (256, 1024, 3, 1, 1)
+[INFO: checkpoint.py: 201]: t_res2_0_branch1_w: (32, 8, 1, 1, 1) => s2.pathway1_res0.branch1.weight: (32, 8, 1, 1, 1)
+[INFO: checkpoint.py: 201]: res4_5_branch2c_bn_s: (1024,) => s4.pathway0_res5.branch2.c_bn.weight: (1024,)
+[INFO: checkpoint.py: 201]: t_res4_2_branch2c_bn_b: (128,) => s4.pathway1_res2.branch2.c_bn.bias: (128,)
+[INFO: checkpoint.py: 201]: t_res2_0_branch2a_bn_s: (8,) => s2.pathway1_res0.branch2.a_bn.weight: (8,)
+[INFO: checkpoint.py: 201]: t_res2_2_branch2c_bn_subsample_w: (64, 32, 7, 1, 1) => s2_fuse.conv_f2s.weight: (64, 32, 7, 1, 1)
+[INFO: checkpoint.py: 201]: res4_5_branch2a_bn_s: (256,) => s4.pathway0_res5.branch2.a_bn.weight: (256,)
+[INFO: checkpoint.py: 201]: res4_3_branch2b_bn_b: (256,) => s4.pathway0_res3.branch2.b_bn.bias: (256,)
+[INFO: checkpoint.py: 201]: t_res5_2_branch2a_w: (64, 256, 3, 1, 1) => s5.pathway1_res2.branch2.a.weight: (64, 256, 3, 1, 1)
+[INFO: checkpoint.py: 201]: t_pool1_subsample_w: (16, 8, 7, 1, 1) => s1_fuse.conv_f2s.weight: (16, 8, 7, 1, 1)
+[INFO: checkpoint.py: 201]: t_res2_0_branch2a_bn_b: (8,) => s2.pathway1_res0.branch2.a_bn.bias: (8,)
+[INFO: checkpoint.py: 201]: res4_5_branch2a_bn_b: (256,) => s4.pathway0_res5.branch2.a_bn.bias: (256,)
+[INFO: checkpoint.py: 201]: t_res3_3_branch2c_w: (64, 16, 1, 1, 1) => s3.pathway1_res3.branch2.c.weight: (64, 16, 1, 1, 1)
+[INFO: kinetics.py: 73]: Constructing Kinetics train...
+[INFO: kinetics.py: 108]: Constructing kinetics dataloader (size: 820) from /home/chenxi/dataset/train_data/train_data/train.csv
+[INFO: kinetics.py: 73]: Constructing Kinetics val...
+[INFO: kinetics.py: 108]: Constructing kinetics dataloader (size: 181) from /home/chenxi/dataset/train_data/train_data/val.csv
+[INFO: train_net.py: 291]: Start epoch: 1
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  0
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "1/150", "eta": "0:26:42", "iter": "10/27", "loss": 1.059738, "lr": 0.009913, "mem": 3607, "time_diff": 0.396535, "top1_err": 53.333336, "top5_err": 28.333331}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "1/150", "eta": "0:25:26", "iter": "20/27", "loss": 0.751569, "lr": 0.009816, "mem": 3666, "time_diff": 0.378795, "top1_err": 35.000000, "top5_err": 6.666665}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "1/150", "eta": "0:51:01", "loss": 0.832045, "lr": 0.009749, "mem": 3666, "time_diff": 0.761126, "top1_err": 40.246914, "top5_err": 15.679011}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  1
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "2/150", "eta": "0:30:56", "iter": "10/27", "loss": 0.445669, "lr": 0.009652, "mem": 3667, "time_diff": 0.462534, "top1_err": 16.666668, "top5_err": 3.333332}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "2/150", "eta": "0:27:16", "iter": "20/27", "loss": 0.421613, "lr": 0.009556, "mem": 3667, "time_diff": 0.408809, "top1_err": 16.666666, "top5_err": 4.999998}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "2/150", "eta": "0:49:15", "loss": 0.414862, "lr": 0.009488, "mem": 3667, "time_diff": 0.739816, "top1_err": 17.777776, "top5_err": 4.444443}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  2
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "3/150", "eta": "0:27:58", "iter": "10/27", "loss": 0.342785, "lr": 0.009391, "mem": 3667, "time_diff": 0.421149, "top1_err": 14.999999, "top5_err": 3.333332}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "3/150", "eta": "0:25:22", "iter": "20/27", "loss": 0.224756, "lr": 0.009295, "mem": 3667, "time_diff": 0.382854, "top1_err": 8.333332, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "3/150", "eta": "0:48:07", "loss": 0.313497, "lr": 0.009227, "mem": 3667, "time_diff": 0.727901, "top1_err": 12.962962, "top5_err": 3.333333}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  3
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "4/150", "eta": "0:30:59", "iter": "10/27", "loss": 0.227522, "lr": 0.009131, "mem": 3667, "time_diff": 0.469746, "top1_err": 9.999997, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "4/150", "eta": "0:26:27", "iter": "20/27", "loss": 0.195878, "lr": 0.009034, "mem": 3667, "time_diff": 0.401961, "top1_err": 9.999997, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "4/150", "eta": "0:48:36", "loss": 0.240270, "lr": 0.008966, "mem": 3667, "time_diff": 0.740099, "top1_err": 10.370368, "top5_err": 0.987654}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  4
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "5/150", "eta": "0:26:17", "iter": "10/27", "loss": 0.217580, "lr": 0.008870, "mem": 3667, "time_diff": 0.401130, "top1_err": 9.999996, "top5_err": 3.333332}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "5/150", "eta": "0:27:35", "iter": "20/27", "loss": 0.208529, "lr": 0.008773, "mem": 3667, "time_diff": 0.421993, "top1_err": 6.666664, "top5_err": 3.333332}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "5/150", "eta": "0:48:21", "loss": 0.221570, "lr": 0.008706, "mem": 3667, "time_diff": 0.741305, "top1_err": 8.765431, "top5_err": 2.345678}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  5
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "6/150", "eta": "0:27:14", "iter": "10/27", "loss": 0.206109, "lr": 0.008609, "mem": 3667, "time_diff": 0.418483, "top1_err": 9.999997, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "6/150", "eta": "0:28:04", "iter": "20/27", "loss": 0.239625, "lr": 0.008512, "mem": 3667, "time_diff": 0.432559, "top1_err": 8.333330, "top5_err": 1.666666}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "6/150", "eta": "0:48:25", "loss": 0.215010, "lr": 0.008445, "mem": 3667, "time_diff": 0.747428, "top1_err": 8.518517, "top5_err": 1.481481}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  6
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "7/150", "eta": "0:27:07", "iter": "10/27", "loss": 0.141113, "lr": 0.008348, "mem": 3667, "time_diff": 0.419790, "top1_err": 4.999998, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "7/150", "eta": "0:27:03", "iter": "20/27", "loss": 0.120515, "lr": 0.008252, "mem": 3667, "time_diff": 0.419728, "top1_err": 6.666664, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "7/150", "eta": "0:47:35", "loss": 0.164506, "lr": 0.008184, "mem": 3667, "time_diff": 0.739912, "top1_err": 6.296295, "top5_err": 1.975308}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  7
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "8/150", "eta": "0:27:27", "iter": "10/27", "loss": 0.154922, "lr": 0.008087, "mem": 3667, "time_diff": 0.427814, "top1_err": 3.333332, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "8/150", "eta": "0:25:09", "iter": "20/27", "loss": 0.167391, "lr": 0.007991, "mem": 3667, "time_diff": 0.392893, "top1_err": 8.333331, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "8/150", "eta": "0:47:55", "loss": 0.192204, "lr": 0.007923, "mem": 3667, "time_diff": 0.750176, "top1_err": 6.790122, "top5_err": 0.617284}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  8
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "9/150", "eta": "0:40:09", "iter": "10/27", "loss": 0.142710, "lr": 0.007827, "mem": 3667, "time_diff": 0.630106, "top1_err": 4.999998, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "9/150", "eta": "0:26:33", "iter": "20/27", "loss": 0.140684, "lr": 0.007730, "mem": 3667, "time_diff": 0.417700, "top1_err": 6.666665, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "9/150", "eta": "0:47:13", "loss": 0.156586, "lr": 0.007662, "mem": 3667, "time_diff": 0.744554, "top1_err": 5.802468, "top5_err": 1.111111}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  9
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "10/150", "eta": "0:26:35", "iter": "10/27", "loss": 0.111811, "lr": 0.007566, "mem": 3667, "time_diff": 0.420186, "top1_err": 4.999998, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "10/150", "eta": "0:26:39", "iter": "20/27", "loss": 0.106410, "lr": 0.007469, "mem": 3667, "time_diff": 0.422429, "top1_err": 4.999998, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "10/150", "eta": "0:47:23", "loss": 0.128392, "lr": 0.007402, "mem": 3667, "time_diff": 0.752466, "top1_err": 5.555554, "top5_err": 1.111111}
+[INFO: logging.py: 66]: json_stats: {"_type": "val_epoch", "epoch": "10/150", "mem": 3667, "min_top1_err": 6.557375, "min_top5_err": 0.546448, "time_diff": 0.752725, "top1_err": 6.557375, "top5_err": 0.546448}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  10
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "11/150", "eta": "0:26:49", "iter": "10/27", "loss": 0.088961, "lr": 0.007305, "mem": 3667, "time_diff": 0.427021, "top1_err": 3.333332, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "11/150", "eta": "0:26:47", "iter": "20/27", "loss": 0.115419, "lr": 0.007208, "mem": 3667, "time_diff": 0.427605, "top1_err": 4.999998, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "11/150", "eta": "0:47:07", "loss": 0.112881, "lr": 0.007141, "mem": 3667, "time_diff": 0.753606, "top1_err": 4.074073, "top5_err": 0.864197}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  11
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "12/150", "eta": "0:28:20", "iter": "10/27", "loss": 0.046904, "lr": 0.007044, "mem": 3674, "time_diff": 0.454257, "top1_err": 1.666666, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "12/150", "eta": "0:25:31", "iter": "20/27", "loss": 0.111140, "lr": 0.006948, "mem": 3674, "time_diff": 0.410199, "top1_err": 3.333332, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "12/150", "eta": "0:47:23", "loss": 0.104279, "lr": 0.006880, "mem": 3674, "time_diff": 0.763381, "top1_err": 3.580246, "top5_err": 0.493827}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  12
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "13/150", "eta": "0:26:19", "iter": "10/27", "loss": 0.077158, "lr": 0.006783, "mem": 3674, "time_diff": 0.424952, "top1_err": 3.333332, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "13/150", "eta": "0:24:34", "iter": "20/27", "loss": 0.078605, "lr": 0.006687, "mem": 3674, "time_diff": 0.397818, "top1_err": 3.333332, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "13/150", "eta": "0:45:24", "loss": 0.097491, "lr": 0.006619, "mem": 3674, "time_diff": 0.736739, "top1_err": 2.962962, "top5_err": 0.246913}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  13
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "14/150", "eta": "0:26:11", "iter": "10/27", "loss": 0.071125, "lr": 0.006523, "mem": 3674, "time_diff": 0.426016, "top1_err": 3.333332, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "14/150", "eta": "0:23:51", "iter": "20/27", "loss": 0.084162, "lr": 0.006426, "mem": 3674, "time_diff": 0.389045, "top1_err": 3.333332, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "14/150", "eta": "0:45:32", "loss": 0.119417, "lr": 0.006358, "mem": 3674, "time_diff": 0.744285, "top1_err": 4.074073, "top5_err": 0.740741}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  14
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "15/150", "eta": "0:29:06", "iter": "10/27", "loss": 0.079237, "lr": 0.006262, "mem": 3674, "time_diff": 0.476902, "top1_err": 3.333332, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "15/150", "eta": "0:25:42", "iter": "20/27", "loss": 0.061840, "lr": 0.006165, "mem": 3674, "time_diff": 0.422301, "top1_err": 3.333332, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "15/150", "eta": "0:46:13", "loss": 0.099301, "lr": 0.006097, "mem": 3674, "time_diff": 0.761161, "top1_err": 3.580246, "top5_err": 0.617284}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  15
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "16/150", "eta": "0:28:03", "iter": "10/27", "loss": 0.067535, "lr": 0.006001, "mem": 3674, "time_diff": 0.463017, "top1_err": 3.333332, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "16/150", "eta": "0:25:17", "iter": "20/27", "loss": 0.060999, "lr": 0.005904, "mem": 3674, "time_diff": 0.418728, "top1_err": 3.333332, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "16/150", "eta": "0:45:40", "loss": 0.079306, "lr": 0.005837, "mem": 3674, "time_diff": 0.757704, "top1_err": 3.456789, "top5_err": 0.123457}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  16
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "17/150", "eta": "0:26:28", "iter": "10/27", "loss": 0.069516, "lr": 0.005740, "mem": 3674, "time_diff": 0.440156, "top1_err": 1.666666, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "17/150", "eta": "0:24:47", "iter": "20/27", "loss": 0.055834, "lr": 0.005643, "mem": 3674, "time_diff": 0.413525, "top1_err": 3.333332, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "17/150", "eta": "0:44:42", "loss": 0.098591, "lr": 0.005576, "mem": 3674, "time_diff": 0.747293, "top1_err": 3.209876, "top5_err": 0.740740}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  17
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "18/150", "eta": "0:25:46", "iter": "10/27", "loss": 0.034528, "lr": 0.005479, "mem": 3674, "time_diff": 0.431762, "top1_err": 1.666666, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "18/150", "eta": "0:24:23", "iter": "20/27", "loss": 0.041336, "lr": 0.005383, "mem": 3674, "time_diff": 0.409741, "top1_err": 1.666666, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "18/150", "eta": "0:44:59", "loss": 0.067531, "lr": 0.005315, "mem": 3674, "time_diff": 0.757639, "top1_err": 2.592592, "top5_err": 0.493827}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  18
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "19/150", "eta": "0:27:58", "iter": "10/27", "loss": 0.030876, "lr": 0.005218, "mem": 3674, "time_diff": 0.472303, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "19/150", "eta": "0:25:10", "iter": "20/27", "loss": 0.049393, "lr": 0.005122, "mem": 3674, "time_diff": 0.426287, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "19/150", "eta": "0:44:31", "loss": 0.063756, "lr": 0.005054, "mem": 3674, "time_diff": 0.755651, "top1_err": 1.728394, "top5_err": 0.493827}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  19
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "20/150", "eta": "0:24:48", "iter": "10/27", "loss": 0.050931, "lr": 0.004958, "mem": 3674, "time_diff": 0.421991, "top1_err": 1.666666, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "20/150", "eta": "0:23:51", "iter": "20/27", "loss": 0.049949, "lr": 0.004861, "mem": 3674, "time_diff": 0.407119, "top1_err": 1.666666, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "20/150", "eta": "0:44:00", "loss": 0.058816, "lr": 0.004793, "mem": 3674, "time_diff": 0.752384, "top1_err": 1.975308, "top5_err": 0.246913}
+[INFO: logging.py: 66]: json_stats: {"_type": "val_epoch", "epoch": "20/150", "mem": 3674, "min_top1_err": 5.464480, "min_top5_err": 0.546448, "time_diff": 0.751104, "top1_err": 5.464480, "top5_err": 0.546448}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  20
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "21/150", "eta": "0:26:28", "iter": "10/27", "loss": 0.062171, "lr": 0.004697, "mem": 3674, "time_diff": 0.453979, "top1_err": 3.333332, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "21/150", "eta": "0:24:59", "iter": "20/27", "loss": 0.022292, "lr": 0.004600, "mem": 3674, "time_diff": 0.429748, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "21/150", "eta": "0:45:25", "loss": 0.050537, "lr": 0.004533, "mem": 3674, "time_diff": 0.782837, "top1_err": 1.481481, "top5_err": 0.246913}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  21
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "22/150", "eta": "0:25:33", "iter": "10/27", "loss": 0.054111, "lr": 0.004436, "mem": 3674, "time_diff": 0.441568, "top1_err": 3.333332, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "22/150", "eta": "0:24:14", "iter": "20/27", "loss": 0.027256, "lr": 0.004339, "mem": 3674, "time_diff": 0.420115, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "22/150", "eta": "0:43:43", "loss": 0.044619, "lr": 0.004272, "mem": 3674, "time_diff": 0.759474, "top1_err": 1.728394, "top5_err": 0.246913}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  22
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "23/150", "eta": "0:22:49", "iter": "10/27", "loss": 0.037293, "lr": 0.004175, "mem": 3674, "time_diff": 0.397346, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "23/150", "eta": "0:24:46", "iter": "20/27", "loss": 0.034415, "lr": 0.004079, "mem": 3674, "time_diff": 0.432709, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "23/150", "eta": "0:43:22", "loss": 0.041528, "lr": 0.004011, "mem": 3674, "time_diff": 0.759263, "top1_err": 1.111111, "top5_err": 0.246913}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  23
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "24/150", "eta": "0:26:20", "iter": "10/27", "loss": 0.035939, "lr": 0.003914, "mem": 3674, "time_diff": 0.462382, "top1_err": 1.666666, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "24/150", "eta": "0:24:10", "iter": "20/27", "loss": 0.031532, "lr": 0.003818, "mem": 3674, "time_diff": 0.425376, "top1_err": 1.666666, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "24/150", "eta": "0:42:52", "loss": 0.045481, "lr": 0.003750, "mem": 3674, "time_diff": 0.756472, "top1_err": 2.222222, "top5_err": 0.246913}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  24
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "25/150", "eta": "0:30:15", "iter": "10/27", "loss": 0.021836, "lr": 0.003654, "mem": 3674, "time_diff": 0.535109, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "25/150", "eta": "0:22:59", "iter": "20/27", "loss": 0.028633, "lr": 0.003557, "mem": 3674, "time_diff": 0.407878, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "25/150", "eta": "0:42:13", "loss": 0.042510, "lr": 0.003489, "mem": 3674, "time_diff": 0.750978, "top1_err": 1.234568, "top5_err": 0.123457}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  25
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "26/150", "eta": "0:23:07", "iter": "10/27", "loss": 0.038464, "lr": 0.003393, "mem": 3674, "time_diff": 0.412242, "top1_err": 1.666666, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "26/150", "eta": "0:23:47", "iter": "20/27", "loss": 0.014833, "lr": 0.003296, "mem": 3674, "time_diff": 0.425538, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "26/150", "eta": "0:41:35", "loss": 0.041956, "lr": 0.003229, "mem": 3674, "time_diff": 0.745868, "top1_err": 1.728394, "top5_err": 0.123457}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  26
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "27/150", "eta": "0:23:51", "iter": "10/27", "loss": 0.036599, "lr": 0.003132, "mem": 3674, "time_diff": 0.428844, "top1_err": 1.666666, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "27/150", "eta": "0:23:34", "iter": "20/27", "loss": 0.032893, "lr": 0.003035, "mem": 3674, "time_diff": 0.425016, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "27/150", "eta": "0:42:19", "loss": 0.047137, "lr": 0.002968, "mem": 3674, "time_diff": 0.764774, "top1_err": 1.975308, "top5_err": 0.123457}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  27
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "28/150", "eta": "0:23:12", "iter": "10/27", "loss": 0.018222, "lr": 0.002871, "mem": 3674, "time_diff": 0.420452, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "28/150", "eta": "0:22:58", "iter": "20/27", "loss": 0.020757, "lr": 0.002775, "mem": 3674, "time_diff": 0.417739, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "28/150", "eta": "0:41:31", "loss": 0.030649, "lr": 0.002707, "mem": 3674, "time_diff": 0.756577, "top1_err": 0.740740, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  28
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "29/150", "eta": "0:23:31", "iter": "10/27", "loss": 0.027616, "lr": 0.002610, "mem": 3674, "time_diff": 0.429825, "top1_err": 1.666666, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "29/150", "eta": "0:22:41", "iter": "20/27", "loss": 0.021413, "lr": 0.002514, "mem": 3674, "time_diff": 0.415861, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "29/150", "eta": "0:40:58", "loss": 0.038936, "lr": 0.002446, "mem": 3674, "time_diff": 0.752821, "top1_err": 1.728394, "top5_err": 0.246913}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  29
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "30/150", "eta": "0:28:42", "iter": "10/27", "loss": 0.011348, "lr": 0.002350, "mem": 3674, "time_diff": 0.528718, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "30/150", "eta": "0:23:06", "iter": "20/27", "loss": 0.017386, "lr": 0.002253, "mem": 3674, "time_diff": 0.427094, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "30/150", "eta": "0:42:02", "loss": 0.039192, "lr": 0.002185, "mem": 3674, "time_diff": 0.778823, "top1_err": 0.740740, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "val_epoch", "epoch": "30/150", "mem": 3674, "min_top1_err": 3.278687, "min_top5_err": 0.546448, "time_diff": 0.758881, "top1_err": 3.278687, "top5_err": 0.546448}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  30
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "31/150", "eta": "0:25:13", "iter": "10/27", "loss": 0.015993, "lr": 0.002089, "mem": 3674, "time_diff": 0.468674, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "31/150", "eta": "0:23:00", "iter": "20/27", "loss": 0.016680, "lr": 0.001992, "mem": 3674, "time_diff": 0.428583, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "31/150", "eta": "0:40:44", "loss": 0.025869, "lr": 0.001924, "mem": 3674, "time_diff": 0.761202, "top1_err": 0.740740, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  31
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "32/150", "eta": "0:29:08", "iter": "10/27", "loss": 0.015489, "lr": 0.001828, "mem": 3674, "time_diff": 0.545832, "top1_err": 0.000000, "top5_err": 0.000000}
+curve_epoch:  54
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "55/150", "eta": "0:21:10", "iter": "10/27", "loss": 0.010671, "lr": 0.000710, "mem": 3609, "time_diff": 0.491959, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "55/150", "eta": "0:16:15", "iter": "20/27", "loss": 0.014485, "lr": 0.000706, "mem": 3609, "time_diff": 0.379181, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "55/150", "eta": "0:31:36", "loss": 0.028419, "lr": 0.000704, "mem": 3666, "time_diff": 0.739470, "top1_err": 1.234567, "top5_err": 0.370370}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  55
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "56/150", "eta": "0:17:56", "iter": "10/27", "loss": 0.016405, "lr": 0.000700, "mem": 3666, "time_diff": 0.421342, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "56/150", "eta": "0:17:33", "iter": "20/27", "loss": 0.004273, "lr": 0.000697, "mem": 3666, "time_diff": 0.413794, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "56/150", "eta": "0:31:18", "loss": 0.024709, "lr": 0.000694, "mem": 3666, "time_diff": 0.740273, "top1_err": 0.740741, "top5_err": 0.246913}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  56
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "57/150", "eta": "0:16:30", "iter": "10/27", "loss": 0.021893, "lr": 0.000691, "mem": 3666, "time_diff": 0.391947, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "57/150", "eta": "0:16:16", "iter": "20/27", "loss": 0.014139, "lr": 0.000687, "mem": 3666, "time_diff": 0.387675, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "57/150", "eta": "0:30:18", "loss": 0.020121, "lr": 0.000684, "mem": 3666, "time_diff": 0.724637, "top1_err": 0.864197, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  57
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "58/150", "eta": "0:19:00", "iter": "10/27", "loss": 0.010928, "lr": 0.000681, "mem": 3666, "time_diff": 0.455942, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "58/150", "eta": "0:17:21", "iter": "20/27", "loss": 0.022496, "lr": 0.000677, "mem": 3666, "time_diff": 0.418113, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "58/150", "eta": "0:30:40", "loss": 0.021554, "lr": 0.000675, "mem": 3666, "time_diff": 0.741205, "top1_err": 0.740740, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  58
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "59/150", "eta": "0:16:45", "iter": "10/27", "loss": 0.008729, "lr": 0.000671, "mem": 3666, "time_diff": 0.406388, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "59/150", "eta": "0:17:33", "iter": "20/27", "loss": 0.009962, "lr": 0.000667, "mem": 3666, "time_diff": 0.427485, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "59/150", "eta": "0:30:22", "loss": 0.015376, "lr": 0.000665, "mem": 3666, "time_diff": 0.741904, "top1_err": 0.493827, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  59
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "60/150", "eta": "0:16:31", "iter": "10/27", "loss": 0.021068, "lr": 0.000661, "mem": 3666, "time_diff": 0.405109, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "60/150", "eta": "0:17:27", "iter": "20/27", "loss": 0.004405, "lr": 0.000657, "mem": 3666, "time_diff": 0.429996, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "60/150", "eta": "0:29:43", "loss": 0.017181, "lr": 0.000655, "mem": 3666, "time_diff": 0.734192, "top1_err": 0.493827, "top5_err": 0.123457}
+[INFO: logging.py: 66]: json_stats: {"_type": "val_epoch", "epoch": "60/150", "mem": 3666, "min_top1_err": 8.196720, "min_top5_err": 1.639344, "time_diff": 0.729238, "top1_err": 8.196720, "top5_err": 1.639344}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  60
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "61/150", "eta": "0:17:28", "iter": "10/27", "loss": 0.003492, "lr": 0.000651, "mem": 3666, "time_diff": 0.433386, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "61/150", "eta": "0:16:57", "iter": "20/27", "loss": 0.025258, "lr": 0.000647, "mem": 3666, "time_diff": 0.422117, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "61/150", "eta": "0:29:24", "loss": 0.034227, "lr": 0.000645, "mem": 3666, "time_diff": 0.734477, "top1_err": 1.234568, "top5_err": 0.370370}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  61
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "62/150", "eta": "0:20:09", "iter": "10/27", "loss": 0.011317, "lr": 0.000641, "mem": 3666, "time_diff": 0.505386, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "62/150", "eta": "0:15:50", "iter": "20/27", "loss": 0.019949, "lr": 0.000637, "mem": 3666, "time_diff": 0.398988, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "62/150", "eta": "0:28:34", "loss": 0.020889, "lr": 0.000635, "mem": 3670, "time_diff": 0.721863, "top1_err": 0.617284, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  62
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "63/150", "eta": "0:16:59", "iter": "10/27", "loss": 0.003118, "lr": 0.000631, "mem": 3670, "time_diff": 0.430801, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "63/150", "eta": "0:16:35", "iter": "20/27", "loss": 0.006994, "lr": 0.000627, "mem": 3670, "time_diff": 0.422468, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "63/150", "eta": "0:28:54", "loss": 0.022263, "lr": 0.000625, "mem": 3670, "time_diff": 0.738491, "top1_err": 0.740741, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  63
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "64/150", "eta": "0:16:52", "iter": "10/27", "loss": 0.009974, "lr": 0.000621, "mem": 3670, "time_diff": 0.432891, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "64/150", "eta": "0:16:24", "iter": "20/27", "loss": 0.014276, "lr": 0.000617, "mem": 3670, "time_diff": 0.422864, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "64/150", "eta": "0:28:08", "loss": 0.020047, "lr": 0.000615, "mem": 3670, "time_diff": 0.727207, "top1_err": 0.493827, "top5_err": 0.123457}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  64
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "65/150", "eta": "0:15:54", "iter": "10/27", "loss": 0.013118, "lr": 0.000611, "mem": 3670, "time_diff": 0.412681, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "65/150", "eta": "0:16:10", "iter": "20/27", "loss": 0.010119, "lr": 0.000607, "mem": 3670, "time_diff": 0.421718, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "65/150", "eta": "0:27:49", "loss": 0.025037, "lr": 0.000604, "mem": 3670, "time_diff": 0.727919, "top1_err": 0.617284, "top5_err": 0.123457}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  65
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "66/150", "eta": "0:33:21", "iter": "10/27", "loss": 0.008473, "lr": 0.000601, "mem": 3670, "time_diff": 0.875989, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "66/150", "eta": "0:15:17", "iter": "20/27", "loss": 0.011594, "lr": 0.000597, "mem": 3670, "time_diff": 0.403095, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "66/150", "eta": "0:28:28", "loss": 0.013528, "lr": 0.000594, "mem": 3670, "time_diff": 0.753525, "top1_err": 0.370370, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  66
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "67/150", "eta": "0:19:08", "iter": "10/27", "loss": 0.007788, "lr": 0.000590, "mem": 3670, "time_diff": 0.508477, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "67/150", "eta": "0:15:25", "iter": "20/27", "loss": 0.011792, "lr": 0.000586, "mem": 3670, "time_diff": 0.411883, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "67/150", "eta": "0:27:53", "loss": 0.023747, "lr": 0.000584, "mem": 3670, "time_diff": 0.747216, "top1_err": 0.493827, "top5_err": 0.123457}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  67
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "68/150", "eta": "0:20:39", "iter": "10/27", "loss": 0.009851, "lr": 0.000580, "mem": 3670, "time_diff": 0.555758, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "68/150", "eta": "0:15:30", "iter": "20/27", "loss": 0.043731, "lr": 0.000576, "mem": 3670, "time_diff": 0.418978, "top1_err": 3.333332, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "68/150", "eta": "0:27:48", "loss": 0.034865, "lr": 0.000573, "mem": 3670, "time_diff": 0.753652, "top1_err": 1.481481, "top5_err": 0.123457}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  68
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "69/150", "eta": "0:16:46", "iter": "10/27", "loss": 0.008061, "lr": 0.000570, "mem": 3670, "time_diff": 0.456600, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "69/150", "eta": "0:15:35", "iter": "20/27", "loss": 0.015438, "lr": 0.000566, "mem": 3670, "time_diff": 0.426272, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "69/150", "eta": "0:28:16", "loss": 0.015355, "lr": 0.000563, "mem": 3670, "time_diff": 0.775881, "top1_err": 0.370370, "top5_err": 0.123457}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  69
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "70/150", "eta": "0:19:08", "iter": "10/27", "loss": 0.010265, "lr": 0.000559, "mem": 3670, "time_diff": 0.527452, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "70/150", "eta": "0:15:11", "iter": "20/27", "loss": 0.007931, "lr": 0.000555, "mem": 3670, "time_diff": 0.420531, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "70/150", "eta": "0:27:18", "loss": 0.018750, "lr": 0.000553, "mem": 3670, "time_diff": 0.758934, "top1_err": 0.740740, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "val_epoch", "epoch": "70/150", "mem": 3670, "min_top1_err": 7.103823, "min_top5_err": 1.092896, "time_diff": 0.734787, "top1_err": 7.103823, "top5_err": 1.092896}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  70
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "71/150", "eta": "0:15:01", "iter": "10/27", "loss": 0.004810, "lr": 0.000549, "mem": 3670, "time_diff": 0.419493, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "71/150", "eta": "0:14:51", "iter": "20/27", "loss": 0.005131, "lr": 0.000545, "mem": 3670, "time_diff": 0.416449, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "71/150", "eta": "0:27:08", "loss": 0.012987, "lr": 0.000542, "mem": 3670, "time_diff": 0.764007, "top1_err": 0.493827, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  71
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "72/150", "eta": "0:13:55", "iter": "10/27", "loss": 0.009328, "lr": 0.000538, "mem": 3670, "time_diff": 0.393493, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "72/150", "eta": "0:13:52", "iter": "20/27", "loss": 0.006423, "lr": 0.000534, "mem": 3670, "time_diff": 0.394144, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "72/150", "eta": "0:26:05", "loss": 0.016356, "lr": 0.000532, "mem": 3670, "time_diff": 0.743482, "top1_err": 0.493827, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  72
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "73/150", "eta": "0:16:59", "iter": "10/27", "loss": 0.020950, "lr": 0.000528, "mem": 3670, "time_diff": 0.486553, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "73/150", "eta": "0:14:48", "iter": "20/27", "loss": 0.006646, "lr": 0.000524, "mem": 3670, "time_diff": 0.425906, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "73/150", "eta": "0:25:53", "loss": 0.018733, "lr": 0.000521, "mem": 3670, "time_diff": 0.747615, "top1_err": 0.740740, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  73
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "74/150", "eta": "0:15:28", "iter": "10/27", "loss": 0.011054, "lr": 0.000517, "mem": 3670, "time_diff": 0.448664, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "74/150", "eta": "0:14:35", "iter": "20/27", "loss": 0.007683, "lr": 0.000514, "mem": 3670, "time_diff": 0.425341, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "74/150", "eta": "0:26:02", "loss": 0.017108, "lr": 0.000511, "mem": 3670, "time_diff": 0.761694, "top1_err": 0.493827, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  74
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "75/150", "eta": "0:13:56", "iter": "10/27", "loss": 0.013742, "lr": 0.000507, "mem": 3670, "time_diff": 0.409804, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "75/150", "eta": "0:15:07", "iter": "20/27", "loss": 0.005180, "lr": 0.000503, "mem": 3670, "time_diff": 0.446633, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "75/150", "eta": "0:25:21", "loss": 0.013180, "lr": 0.000500, "mem": 3670, "time_diff": 0.751466, "top1_err": 0.370370, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  75
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "76/150", "eta": "0:14:30", "iter": "10/27", "loss": 0.030849, "lr": 0.000497, "mem": 3670, "time_diff": 0.431860, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "76/150", "eta": "0:14:01", "iter": "20/27", "loss": 0.011694, "lr": 0.000493, "mem": 3670, "time_diff": 0.419694, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "76/150", "eta": "0:25:23", "loss": 0.035434, "lr": 0.000490, "mem": 3670, "time_diff": 0.762832, "top1_err": 0.987654, "top5_err": 0.123457}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  76
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "77/150", "eta": "0:14:33", "iter": "10/27", "loss": 0.012466, "lr": 0.000486, "mem": 3670, "time_diff": 0.439379, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "77/150", "eta": "0:13:03", "iter": "20/27", "loss": 0.010111, "lr": 0.000482, "mem": 3670, "time_diff": 0.396168, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "77/150", "eta": "0:24:24", "loss": 0.019693, "lr": 0.000479, "mem": 3670, "time_diff": 0.743324, "top1_err": 0.370370, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  77
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "78/150", "eta": "0:17:49", "iter": "10/27", "loss": 0.006129, "lr": 0.000476, "mem": 3670, "time_diff": 0.545449, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "78/150", "eta": "0:13:30", "iter": "20/27", "loss": 0.004450, "lr": 0.000472, "mem": 3670, "time_diff": 0.415495, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "78/150", "eta": "0:24:22", "loss": 0.017424, "lr": 0.000469, "mem": 3670, "time_diff": 0.752758, "top1_err": 0.493827, "top5_err": 0.123457}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  78
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "79/150", "eta": "0:15:34", "iter": "10/27", "loss": 0.005752, "lr": 0.000465, "mem": 3670, "time_diff": 0.483017, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "79/150", "eta": "0:13:38", "iter": "20/27", "loss": 0.007782, "lr": 0.000461, "mem": 3670, "time_diff": 0.425487, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "79/150", "eta": "0:24:08", "loss": 0.018217, "lr": 0.000459, "mem": 3670, "time_diff": 0.755954, "top1_err": 0.740741, "top5_err": 0.123457}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  79
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "80/150", "eta": "0:13:56", "iter": "10/27", "loss": 0.003618, "lr": 0.000455, "mem": 3670, "time_diff": 0.438861, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "80/150", "eta": "0:12:58", "iter": "20/27", "loss": 0.006558, "lr": 0.000451, "mem": 3670, "time_diff": 0.410168, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "80/150", "eta": "0:24:06", "loss": 0.010342, "lr": 0.000448, "mem": 3670, "time_diff": 0.765769, "top1_err": 0.370370, "top5_err": 0.123457}
+[INFO: logging.py: 66]: json_stats: {"_type": "val_epoch", "epoch": "80/150", "mem": 3670, "min_top1_err": 7.103823, "min_top5_err": 1.092896, "time_diff": 0.745506, "top1_err": 7.103823, "top5_err": 1.092896}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  80
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "81/150", "eta": "0:19:15", "iter": "10/27", "loss": 0.003529, "lr": 0.000444, "mem": 3670, "time_diff": 0.614599, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "81/150", "eta": "0:12:06", "iter": "20/27", "loss": 0.007789, "lr": 0.000440, "mem": 3670, "time_diff": 0.388335, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "81/150", "eta": "0:23:23", "loss": 0.016942, "lr": 0.000438, "mem": 3670, "time_diff": 0.753524, "top1_err": 0.617284, "top5_err": 0.123457}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  81
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "82/150", "eta": "0:13:01", "iter": "10/27", "loss": 0.013672, "lr": 0.000434, "mem": 3670, "time_diff": 0.421883, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "82/150", "eta": "0:13:01", "iter": "20/27", "loss": 0.003906, "lr": 0.000430, "mem": 3670, "time_diff": 0.423814, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "82/150", "eta": "0:22:18", "loss": 0.016366, "lr": 0.000427, "mem": 3670, "time_diff": 0.729433, "top1_err": 0.246913, "top5_err": 0.123457}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  82
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "83/150", "eta": "0:13:32", "iter": "10/27", "loss": 0.012524, "lr": 0.000424, "mem": 3670, "time_diff": 0.444690, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "83/150", "eta": "0:12:50", "iter": "20/27", "loss": 0.004068, "lr": 0.000420, "mem": 3670, "time_diff": 0.424294, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "83/150", "eta": "0:22:46", "loss": 0.012563, "lr": 0.000417, "mem": 3670, "time_diff": 0.755735, "top1_err": 0.123457, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  83
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "84/150", "eta": "0:16:17", "iter": "10/27", "loss": 0.001261, "lr": 0.000413, "mem": 3670, "time_diff": 0.543488, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "84/150", "eta": "0:11:45", "iter": "20/27", "loss": 0.021075, "lr": 0.000409, "mem": 3670, "time_diff": 0.394556, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "84/150", "eta": "0:22:11", "loss": 0.014037, "lr": 0.000407, "mem": 3670, "time_diff": 0.747595, "top1_err": 0.370370, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  84
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "85/150", "eta": "0:12:21", "iter": "10/27", "loss": 0.008024, "lr": 0.000403, "mem": 3670, "time_diff": 0.418587, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "85/150", "eta": "0:11:38", "iter": "20/27", "loss": 0.017870, "lr": 0.000399, "mem": 3670, "time_diff": 0.396639, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "85/150", "eta": "0:21:59", "loss": 0.037776, "lr": 0.000396, "mem": 3670, "time_diff": 0.752109, "top1_err": 1.358024, "top5_err": 0.123457}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  85
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "86/150", "eta": "0:13:51", "iter": "10/27", "loss": 0.007287, "lr": 0.000393, "mem": 3670, "time_diff": 0.476639, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "86/150", "eta": "0:12:06", "iter": "20/27", "loss": 0.010925, "lr": 0.000389, "mem": 3670, "time_diff": 0.418557, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "86/150", "eta": "0:21:50", "loss": 0.023997, "lr": 0.000386, "mem": 3670, "time_diff": 0.758891, "top1_err": 0.864197, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  86
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "87/150", "eta": "0:11:58", "iter": "10/27", "loss": 0.021375, "lr": 0.000382, "mem": 3670, "time_diff": 0.418078, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "87/150", "eta": "0:12:14", "iter": "20/27", "loss": 0.007503, "lr": 0.000379, "mem": 3670, "time_diff": 0.429853, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "87/150", "eta": "0:21:20", "loss": 0.023813, "lr": 0.000376, "mem": 3670, "time_diff": 0.753097, "top1_err": 0.987654, "top5_err": 0.246913}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  87
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "88/150", "eta": "0:13:58", "iter": "10/27", "loss": 0.003461, "lr": 0.000372, "mem": 3670, "time_diff": 0.496119, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "88/150", "eta": "0:11:32", "iter": "20/27", "loss": 0.009746, "lr": 0.000369, "mem": 3670, "time_diff": 0.412048, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "88/150", "eta": "0:21:13", "loss": 0.021993, "lr": 0.000366, "mem": 3670, "time_diff": 0.760951, "top1_err": 0.740740, "top5_err": 0.370370}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  88
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "89/150", "eta": "0:13:18", "iter": "10/27", "loss": 0.013199, "lr": 0.000362, "mem": 3670, "time_diff": 0.479972, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "89/150", "eta": "0:11:34", "iter": "20/27", "loss": 0.005390, "lr": 0.000358, "mem": 3670, "time_diff": 0.420010, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "89/150", "eta": "0:20:55", "loss": 0.028776, "lr": 0.000356, "mem": 3670, "time_diff": 0.762629, "top1_err": 0.864197, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  89
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "90/150", "eta": "0:11:40", "iter": "10/27", "loss": 0.007948, "lr": 0.000352, "mem": 3670, "time_diff": 0.427970, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "90/150", "eta": "0:11:28", "iter": "20/27", "loss": 0.003793, "lr": 0.000348, "mem": 3670, "time_diff": 0.422981, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "90/150", "eta": "0:20:16", "loss": 0.017613, "lr": 0.000346, "mem": 3670, "time_diff": 0.751166, "top1_err": 0.617284, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "val_epoch", "epoch": "90/150", "mem": 3670, "min_top1_err": 6.557376, "min_top5_err": 1.092896, "time_diff": 0.745935, "top1_err": 6.557376, "top5_err": 1.092896}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  90
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "91/150", "eta": "0:12:33", "iter": "10/27", "loss": 0.008234, "lr": 0.000342, "mem": 3670, "time_diff": 0.468097, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "91/150", "eta": "0:11:10", "iter": "20/27", "loss": 0.009346, "lr": 0.000339, "mem": 3670, "time_diff": 0.418915, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "91/150", "eta": "0:20:01", "loss": 0.010803, "lr": 0.000336, "mem": 3670, "time_diff": 0.754437, "top1_err": 0.123457, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  91
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "92/150", "eta": "0:12:08", "iter": "10/27", "loss": 0.003573, "lr": 0.000332, "mem": 3670, "time_diff": 0.460286, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "92/150", "eta": "0:10:22", "iter": "20/27", "loss": 0.007311, "lr": 0.000329, "mem": 3670, "time_diff": 0.395692, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "92/150", "eta": "0:19:36", "loss": 0.016816, "lr": 0.000326, "mem": 3670, "time_diff": 0.751440, "top1_err": 0.370370, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  92
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "93/150", "eta": "0:11:11", "iter": "10/27", "loss": 0.009057, "lr": 0.000322, "mem": 3670, "time_diff": 0.431401, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "93/150", "eta": "0:10:14", "iter": "20/27", "loss": 0.006091, "lr": 0.000319, "mem": 3670, "time_diff": 0.397206, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "93/150", "eta": "0:19:17", "loss": 0.027666, "lr": 0.000316, "mem": 3670, "time_diff": 0.752618, "top1_err": 0.864197, "top5_err": 0.246913}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  93
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "94/150", "eta": "0:10:20", "iter": "10/27", "loss": 0.005786, "lr": 0.000313, "mem": 3670, "time_diff": 0.405904, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "94/150", "eta": "0:10:42", "iter": "20/27", "loss": 0.002531, "lr": 0.000309, "mem": 3670, "time_diff": 0.423166, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "94/150", "eta": "0:18:32", "loss": 0.012454, "lr": 0.000307, "mem": 3670, "time_diff": 0.736203, "top1_err": 0.370370, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  94
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "95/150", "eta": "0:10:58", "iter": "10/27", "loss": 0.019180, "lr": 0.000303, "mem": 3670, "time_diff": 0.438592, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "95/150", "eta": "0:10:35", "iter": "20/27", "loss": 0.020971, "lr": 0.000299, "mem": 3670, "time_diff": 0.425834, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "95/150", "eta": "0:18:32", "loss": 0.022209, "lr": 0.000297, "mem": 3670, "time_diff": 0.749498, "top1_err": 0.864197, "top5_err": 0.123457}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  95
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "96/150", "eta": "0:10:48", "iter": "10/27", "loss": 0.013220, "lr": 0.000293, "mem": 3670, "time_diff": 0.439653, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "96/150", "eta": "0:10:14", "iter": "20/27", "loss": 0.006851, "lr": 0.000290, "mem": 3670, "time_diff": 0.419737, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "96/150", "eta": "0:18:16", "loss": 0.018610, "lr": 0.000287, "mem": 3670, "time_diff": 0.752548, "top1_err": 0.493827, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  96
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "97/150", "eta": "0:10:20", "iter": "10/27", "loss": 0.010064, "lr": 0.000284, "mem": 3670, "time_diff": 0.428309, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "97/150", "eta": "0:09:57", "iter": "20/27", "loss": 0.003743, "lr": 0.000280, "mem": 3670, "time_diff": 0.415238, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "97/150", "eta": "0:18:06", "loss": 0.015691, "lr": 0.000278, "mem": 3670, "time_diff": 0.759507, "top1_err": 0.617284, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  97
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "98/150", "eta": "0:09:58", "iter": "10/27", "loss": 0.006120, "lr": 0.000275, "mem": 3670, "time_diff": 0.420949, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "98/150", "eta": "0:09:44", "iter": "20/27", "loss": 0.003170, "lr": 0.000271, "mem": 3670, "time_diff": 0.414328, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "98/150", "eta": "0:17:45", "loss": 0.013200, "lr": 0.000269, "mem": 3670, "time_diff": 0.759218, "top1_err": 0.246913, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  98
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "99/150", "eta": "0:10:29", "iter": "10/27", "loss": 0.007021, "lr": 0.000265, "mem": 3670, "time_diff": 0.451496, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "99/150", "eta": "0:09:20", "iter": "20/27", "loss": 0.002572, "lr": 0.000262, "mem": 3670, "time_diff": 0.405032, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "99/150", "eta": "0:17:12", "loss": 0.015573, "lr": 0.000259, "mem": 3670, "time_diff": 0.750186, "top1_err": 0.246913, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  99
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "100/150", "eta": "0:09:41", "iter": "10/27", "loss": 0.008206, "lr": 0.000256, "mem": 3670, "time_diff": 0.425626, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "100/150", "eta": "0:09:41", "iter": "20/27", "loss": 0.010575, "lr": 0.000253, "mem": 3670, "time_diff": 0.428729, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "100/150", "eta": "0:17:26", "loss": 0.014615, "lr": 0.000250, "mem": 3670, "time_diff": 0.775624, "top1_err": 0.370370, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "val_epoch", "epoch": "100/150", "mem": 3670, "min_top1_err": 6.557376, "min_top5_err": 1.092896, "time_diff": 0.775749, "top1_err": 8.743167, "top5_err": 1.092896}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  100
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "101/150", "eta": "0:10:19", "iter": "10/27", "loss": 0.006989, "lr": 0.000247, "mem": 3670, "time_diff": 0.462321, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "101/150", "eta": "0:09:19", "iter": "20/27", "loss": 0.011863, "lr": 0.000244, "mem": 3670, "time_diff": 0.420877, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "101/150", "eta": "0:16:37", "loss": 0.024430, "lr": 0.000241, "mem": 3670, "time_diff": 0.753924, "top1_err": 0.987654, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  101
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "102/150", "eta": "0:09:30", "iter": "10/27", "loss": 0.008000, "lr": 0.000238, "mem": 3670, "time_diff": 0.434541, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "102/150", "eta": "0:09:13", "iter": "20/27", "loss": 0.009252, "lr": 0.000235, "mem": 3670, "time_diff": 0.424429, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "102/150", "eta": "0:16:11", "loss": 0.022424, "lr": 0.000232, "mem": 3670, "time_diff": 0.750059, "top1_err": 0.864197, "top5_err": 0.123457}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  102
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "103/150", "eta": "0:11:51", "iter": "10/27", "loss": 0.003000, "lr": 0.000229, "mem": 3670, "time_diff": 0.553086, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "103/150", "eta": "0:08:40", "iter": "20/27", "loss": 0.007468, "lr": 0.000226, "mem": 3670, "time_diff": 0.407571, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "103/150", "eta": "0:16:14", "loss": 0.007902, "lr": 0.000224, "mem": 3670, "time_diff": 0.767995, "top1_err": 0.000000, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  103
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "104/150", "eta": "0:10:47", "iter": "10/27", "loss": 0.004215, "lr": 0.000220, "mem": 3670, "time_diff": 0.514122, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "104/150", "eta": "0:09:00", "iter": "20/27", "loss": 0.008214, "lr": 0.000217, "mem": 3670, "time_diff": 0.432406, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "104/150", "eta": "0:15:44", "loss": 0.011375, "lr": 0.000215, "mem": 3670, "time_diff": 0.760539, "top1_err": 0.370370, "top5_err": 0.123457}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  104
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "105/150", "eta": "0:08:17", "iter": "10/27", "loss": 0.007700, "lr": 0.000212, "mem": 3670, "time_diff": 0.403523, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "105/150", "eta": "0:08:28", "iter": "20/27", "loss": 0.004523, "lr": 0.000209, "mem": 3670, "time_diff": 0.416394, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "105/150", "eta": "0:15:12", "loss": 0.019116, "lr": 0.000206, "mem": 3670, "time_diff": 0.750911, "top1_err": 0.617284, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  105
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "106/150", "eta": "0:09:46", "iter": "10/27", "loss": 0.003336, "lr": 0.000203, "mem": 3670, "time_diff": 0.486889, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "106/150", "eta": "0:08:21", "iter": "20/27", "loss": 0.008568, "lr": 0.000200, "mem": 3670, "time_diff": 0.419272, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "106/150", "eta": "0:14:42", "loss": 0.013245, "lr": 0.000198, "mem": 3670, "time_diff": 0.743339, "top1_err": 0.246913, "top5_err": 0.123457}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  106
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "107/150", "eta": "0:11:19", "iter": "10/27", "loss": 0.007452, "lr": 0.000195, "mem": 3670, "time_diff": 0.576872, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "107/150", "eta": "0:08:04", "iter": "20/27", "loss": 0.004168, "lr": 0.000192, "mem": 3670, "time_diff": 0.414614, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "107/150", "eta": "0:14:34", "loss": 0.012711, "lr": 0.000190, "mem": 3670, "time_diff": 0.753637, "top1_err": 0.370370, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  107
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "108/150", "eta": "0:08:42", "iter": "10/27", "loss": 0.007784, "lr": 0.000187, "mem": 3670, "time_diff": 0.454103, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "108/150", "eta": "0:07:59", "iter": "20/27", "loss": 0.021700, "lr": 0.000184, "mem": 3670, "time_diff": 0.420308, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "108/150", "eta": "0:14:06", "loss": 0.019255, "lr": 0.000182, "mem": 3670, "time_diff": 0.746850, "top1_err": 0.740740, "top5_err": 0.123457}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  108
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "109/150", "eta": "0:07:27", "iter": "10/27", "loss": 0.004108, "lr": 0.000179, "mem": 3670, "time_diff": 0.397811, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "109/150", "eta": "0:07:53", "iter": "20/27", "loss": 0.012573, "lr": 0.000176, "mem": 3670, "time_diff": 0.425474, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "109/150", "eta": "0:14:12", "loss": 0.018848, "lr": 0.000174, "mem": 3670, "time_diff": 0.770416, "top1_err": 0.617284, "top5_err": 0.123457}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  109
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "110/150", "eta": "0:07:57", "iter": "10/27", "loss": 0.003825, "lr": 0.000171, "mem": 3670, "time_diff": 0.434982, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "110/150", "eta": "0:07:39", "iter": "20/27", "loss": 0.012286, "lr": 0.000168, "mem": 3670, "time_diff": 0.422889, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "110/150", "eta": "0:13:43", "loss": 0.011260, "lr": 0.000166, "mem": 3670, "time_diff": 0.762479, "top1_err": 0.246913, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "val_epoch", "epoch": "110/150", "mem": 3670, "min_top1_err": 6.557375, "min_top5_err": 0.546448, "time_diff": 0.738775, "top1_err": 6.557375, "top5_err": 0.546448}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  110
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "111/150", "eta": "0:10:35", "iter": "10/27", "loss": 0.004617, "lr": 0.000163, "mem": 3670, "time_diff": 0.594320, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "111/150", "eta": "0:07:19", "iter": "20/27", "loss": 0.005910, "lr": 0.000160, "mem": 3670, "time_diff": 0.414582, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "111/150", "eta": "0:13:19", "loss": 0.010616, "lr": 0.000158, "mem": 3670, "time_diff": 0.759271, "top1_err": 0.370370, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  111
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "112/150", "eta": "0:07:37", "iter": "10/27", "loss": 0.005760, "lr": 0.000155, "mem": 3670, "time_diff": 0.438230, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "112/150", "eta": "0:07:07", "iter": "20/27", "loss": 0.007994, "lr": 0.000152, "mem": 3670, "time_diff": 0.413751, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "112/150", "eta": "0:12:23", "loss": 0.009190, "lr": 0.000150, "mem": 3670, "time_diff": 0.725211, "top1_err": 0.123457, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  112
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "113/150", "eta": "0:07:47", "iter": "10/27", "loss": 0.012882, "lr": 0.000148, "mem": 3670, "time_diff": 0.460498, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "113/150", "eta": "0:07:04", "iter": "20/27", "loss": 0.009820, "lr": 0.000145, "mem": 3670, "time_diff": 0.421629, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "113/150", "eta": "0:12:28", "loss": 0.018996, "lr": 0.000143, "mem": 3670, "time_diff": 0.749758, "top1_err": 0.864197, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  113
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "114/150", "eta": "0:06:52", "iter": "10/27", "loss": 0.004544, "lr": 0.000140, "mem": 3670, "time_diff": 0.417192, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "114/150", "eta": "0:06:51", "iter": "20/27", "loss": 0.009440, "lr": 0.000138, "mem": 3670, "time_diff": 0.420759, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "114/150", "eta": "0:12:17", "loss": 0.016551, "lr": 0.000136, "mem": 3670, "time_diff": 0.759141, "top1_err": 0.493827, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  114
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "115/150", "eta": "0:07:34", "iter": "10/27", "loss": 0.005195, "lr": 0.000133, "mem": 3670, "time_diff": 0.472126, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "115/150", "eta": "0:06:46", "iter": "20/27", "loss": 0.007614, "lr": 0.000131, "mem": 3670, "time_diff": 0.427413, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "115/150", "eta": "0:11:52", "loss": 0.016867, "lr": 0.000129, "mem": 3670, "time_diff": 0.754315, "top1_err": 0.617284, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  115
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "116/150", "eta": "0:07:51", "iter": "10/27", "loss": 0.009913, "lr": 0.000126, "mem": 3670, "time_diff": 0.504178, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "116/150", "eta": "0:06:34", "iter": "20/27", "loss": 0.003451, "lr": 0.000124, "mem": 3670, "time_diff": 0.426829, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "116/150", "eta": "0:11:27", "loss": 0.015235, "lr": 0.000122, "mem": 3670, "time_diff": 0.748789, "top1_err": 0.370370, "top5_err": 0.246913}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  116
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "117/150", "eta": "0:06:06", "iter": "10/27", "loss": 0.008318, "lr": 0.000119, "mem": 3670, "time_diff": 0.403516, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "117/150", "eta": "0:06:21", "iter": "20/27", "loss": 0.003636, "lr": 0.000117, "mem": 3670, "time_diff": 0.425100, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "117/150", "eta": "0:11:09", "loss": 0.013787, "lr": 0.000115, "mem": 3670, "time_diff": 0.751160, "top1_err": 0.493827, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  117
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "118/150", "eta": "0:06:29", "iter": "10/27", "loss": 0.007241, "lr": 0.000113, "mem": 3670, "time_diff": 0.441728, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "118/150", "eta": "0:06:13", "iter": "20/27", "loss": 0.005699, "lr": 0.000110, "mem": 3670, "time_diff": 0.428276, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "118/150", "eta": "0:11:27", "loss": 0.011788, "lr": 0.000108, "mem": 3670, "time_diff": 0.796496, "top1_err": 0.246914, "top5_err": 0.123457}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  118
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "119/150", "eta": "0:06:08", "iter": "10/27", "loss": 0.012086, "lr": 0.000106, "mem": 3670, "time_diff": 0.431587, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "119/150", "eta": "0:05:36", "iter": "20/27", "loss": 0.010238, "lr": 0.000104, "mem": 3670, "time_diff": 0.399210, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "119/150", "eta": "0:10:32", "loss": 0.021987, "lr": 0.000102, "mem": 3670, "time_diff": 0.755815, "top1_err": 0.987654, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  119
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "120/150", "eta": "0:06:37", "iter": "10/27", "loss": 0.002984, "lr": 0.000100, "mem": 3670, "time_diff": 0.481019, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "120/150", "eta": "0:05:38", "iter": "20/27", "loss": 0.007239, "lr": 0.000097, "mem": 3670, "time_diff": 0.414052, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "120/150", "eta": "0:10:26", "loss": 0.017259, "lr": 0.000096, "mem": 3670, "time_diff": 0.773167, "top1_err": 0.370370, "top5_err": 0.246913}
+[INFO: logging.py: 66]: json_stats: {"_type": "val_epoch", "epoch": "120/150", "mem": 3670, "min_top1_err": 4.918031, "min_top5_err": 0.546448, "time_diff": 0.762226, "top1_err": 4.918031, "top5_err": 0.546448}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  120
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "121/150", "eta": "0:07:37", "iter": "10/27", "loss": 0.008995, "lr": 0.000093, "mem": 3670, "time_diff": 0.571619, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "121/150", "eta": "0:05:04", "iter": "20/27", "loss": 0.024463, "lr": 0.000091, "mem": 3670, "time_diff": 0.385736, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "121/150", "eta": "0:09:53", "loss": 0.019835, "lr": 0.000090, "mem": 3670, "time_diff": 0.758823, "top1_err": 0.740740, "top5_err": 0.123457}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  121
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "122/150", "eta": "0:05:58", "iter": "10/27", "loss": 0.005954, "lr": 0.000087, "mem": 3670, "time_diff": 0.464228, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "122/150", "eta": "0:04:56", "iter": "20/27", "loss": 0.008401, "lr": 0.000085, "mem": 3670, "time_diff": 0.388432, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "122/150", "eta": "0:09:24", "loss": 0.012270, "lr": 0.000084, "mem": 3670, "time_diff": 0.747374, "top1_err": 0.493827, "top5_err": 0.246913}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  122
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "123/150", "eta": "0:06:16", "iter": "10/27", "loss": 0.002214, "lr": 0.000082, "mem": 3670, "time_diff": 0.505300, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "123/150", "eta": "0:05:10", "iter": "20/27", "loss": 0.005709, "lr": 0.000080, "mem": 3670, "time_diff": 0.422174, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "123/150", "eta": "0:09:09", "loss": 0.015977, "lr": 0.000078, "mem": 3670, "time_diff": 0.753442, "top1_err": 0.617284, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  123
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "124/150", "eta": "0:04:54", "iter": "10/27", "loss": 0.007668, "lr": 0.000076, "mem": 3670, "time_diff": 0.409467, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "124/150", "eta": "0:05:02", "iter": "20/27", "loss": 0.011981, "lr": 0.000074, "mem": 3670, "time_diff": 0.426938, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "124/150", "eta": "0:08:54", "loss": 0.012889, "lr": 0.000073, "mem": 3670, "time_diff": 0.761826, "top1_err": 0.493827, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  124
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "125/150", "eta": "0:05:53", "iter": "10/27", "loss": 0.024584, "lr": 0.000071, "mem": 3670, "time_diff": 0.510207, "top1_err": 1.666666, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "125/150", "eta": "0:04:39", "iter": "20/27", "loss": 0.009317, "lr": 0.000069, "mem": 3670, "time_diff": 0.410185, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "125/150", "eta": "0:08:28", "loss": 0.022781, "lr": 0.000067, "mem": 3670, "time_diff": 0.753328, "top1_err": 0.987654, "top5_err": 0.123457}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  125
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "126/150", "eta": "0:05:48", "iter": "10/27", "loss": 0.003214, "lr": 0.000065, "mem": 3670, "time_diff": 0.523765, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "126/150", "eta": "0:04:34", "iter": "20/27", "loss": 0.011090, "lr": 0.000063, "mem": 3670, "time_diff": 0.419258, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "126/150", "eta": "0:08:08", "loss": 0.021919, "lr": 0.000062, "mem": 3670, "time_diff": 0.754612, "top1_err": 0.740741, "top5_err": 0.123457}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  126
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "127/150", "eta": "0:04:37", "iter": "10/27", "loss": 0.004431, "lr": 0.000060, "mem": 3670, "time_diff": 0.434335, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "127/150", "eta": "0:04:08", "iter": "20/27", "loss": 0.003581, "lr": 0.000058, "mem": 3670, "time_diff": 0.395887, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "127/150", "eta": "0:07:43", "loss": 0.019647, "lr": 0.000057, "mem": 3670, "time_diff": 0.745948, "top1_err": 0.740740, "top5_err": 0.246913}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  127
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "128/150", "eta": "0:04:19", "iter": "10/27", "loss": 0.010851, "lr": 0.000055, "mem": 3670, "time_diff": 0.425065, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "128/150", "eta": "0:04:16", "iter": "20/27", "loss": 0.005995, "lr": 0.000054, "mem": 3670, "time_diff": 0.426987, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "128/150", "eta": "0:07:30", "loss": 0.015178, "lr": 0.000052, "mem": 3670, "time_diff": 0.758447, "top1_err": 0.493827, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  128
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "129/150", "eta": "0:03:59", "iter": "10/27", "loss": 0.002720, "lr": 0.000051, "mem": 3670, "time_diff": 0.409432, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "129/150", "eta": "0:04:04", "iter": "20/27", "loss": 0.011987, "lr": 0.000049, "mem": 3670, "time_diff": 0.425368, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "129/150", "eta": "0:07:04", "loss": 0.013466, "lr": 0.000048, "mem": 3670, "time_diff": 0.749744, "top1_err": 0.493827, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  129
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "130/150", "eta": "0:04:15", "iter": "10/27", "loss": 0.005761, "lr": 0.000046, "mem": 3670, "time_diff": 0.458293, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "130/150", "eta": "0:03:50", "iter": "20/27", "loss": 0.004315, "lr": 0.000044, "mem": 3670, "time_diff": 0.421520, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "130/150", "eta": "0:06:49", "loss": 0.011206, "lr": 0.000043, "mem": 3670, "time_diff": 0.758352, "top1_err": 0.370370, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "val_epoch", "epoch": "130/150", "mem": 3670, "min_top1_err": 4.918031, "min_top5_err": 0.546448, "time_diff": 0.752746, "top1_err": 4.918031, "top5_err": 1.092896}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  130
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "131/150", "eta": "0:04:25", "iter": "10/27", "loss": 0.010043, "lr": 0.000042, "mem": 3670, "time_diff": 0.501595, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "131/150", "eta": "0:03:37", "iter": "20/27", "loss": 0.003668, "lr": 0.000040, "mem": 3670, "time_diff": 0.418494, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "131/150", "eta": "0:06:24", "loss": 0.014834, "lr": 0.000039, "mem": 3670, "time_diff": 0.750450, "top1_err": 0.493827, "top5_err": 0.123457}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  131
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "132/150", "eta": "0:04:22", "iter": "10/27", "loss": 0.008419, "lr": 0.000038, "mem": 3670, "time_diff": 0.522147, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "132/150", "eta": "0:03:20", "iter": "20/27", "loss": 0.012849, "lr": 0.000036, "mem": 3670, "time_diff": 0.407138, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "132/150", "eta": "0:06:14", "loss": 0.020031, "lr": 0.000035, "mem": 3670, "time_diff": 0.771349, "top1_err": 0.740740, "top5_err": 0.123457}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  132
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "133/150", "eta": "0:03:26", "iter": "10/27", "loss": 0.005452, "lr": 0.000034, "mem": 3670, "time_diff": 0.433008, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "133/150", "eta": "0:03:11", "iter": "20/27", "loss": 0.004807, "lr": 0.000032, "mem": 3670, "time_diff": 0.411071, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "133/150", "eta": "0:05:41", "loss": 0.013074, "lr": 0.000031, "mem": 3670, "time_diff": 0.743461, "top1_err": 0.493827, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  133
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "134/150", "eta": "0:02:59", "iter": "10/27", "loss": 0.005887, "lr": 0.000030, "mem": 3670, "time_diff": 0.399128, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "134/150", "eta": "0:02:54", "iter": "20/27", "loss": 0.005786, "lr": 0.000029, "mem": 3670, "time_diff": 0.397603, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "134/150", "eta": "0:05:33", "loss": 0.014213, "lr": 0.000028, "mem": 3670, "time_diff": 0.771972, "top1_err": 0.617284, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  134
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "135/150", "eta": "0:02:46", "iter": "10/27", "loss": 0.021612, "lr": 0.000027, "mem": 3670, "time_diff": 0.393730, "top1_err": 1.666666, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "135/150", "eta": "0:02:45", "iter": "20/27", "loss": 0.011324, "lr": 0.000025, "mem": 3670, "time_diff": 0.401315, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "135/150", "eta": "0:05:10", "loss": 0.020679, "lr": 0.000025, "mem": 3670, "time_diff": 0.767604, "top1_err": 0.987654, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  135
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "136/150", "eta": "0:03:03", "iter": "10/27", "loss": 0.015157, "lr": 0.000023, "mem": 3670, "time_diff": 0.464396, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "136/150", "eta": "0:02:40", "iter": "20/27", "loss": 0.007883, "lr": 0.000022, "mem": 3670, "time_diff": 0.418037, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "136/150", "eta": "0:04:45", "loss": 0.013272, "lr": 0.000021, "mem": 3670, "time_diff": 0.755035, "top1_err": 0.370370, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  136
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "137/150", "eta": "0:03:01", "iter": "10/27", "loss": 0.009998, "lr": 0.000020, "mem": 3670, "time_diff": 0.493768, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "137/150", "eta": "0:02:29", "iter": "20/27", "loss": 0.008969, "lr": 0.000019, "mem": 3670, "time_diff": 0.416669, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "137/150", "eta": "0:04:31", "loss": 0.011709, "lr": 0.000019, "mem": 3670, "time_diff": 0.772393, "top1_err": 0.246913, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  137
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "138/150", "eta": "0:02:54", "iter": "10/27", "loss": 0.013045, "lr": 0.000017, "mem": 3670, "time_diff": 0.512752, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "138/150", "eta": "0:02:17", "iter": "20/27", "loss": 0.003501, "lr": 0.000016, "mem": 3670, "time_diff": 0.414410, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "138/150", "eta": "0:04:04", "loss": 0.017139, "lr": 0.000016, "mem": 3670, "time_diff": 0.753632, "top1_err": 0.617284, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  138
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "139/150", "eta": "0:02:38", "iter": "10/27", "loss": 0.004062, "lr": 0.000015, "mem": 3670, "time_diff": 0.503744, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "139/150", "eta": "0:02:01", "iter": "20/27", "loss": 0.005462, "lr": 0.000014, "mem": 3670, "time_diff": 0.398778, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "139/150", "eta": "0:03:42", "loss": 0.018339, "lr": 0.000013, "mem": 3670, "time_diff": 0.749712, "top1_err": 0.617284, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  139
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "140/150", "eta": "0:02:03", "iter": "10/27", "loss": 0.006034, "lr": 0.000012, "mem": 3670, "time_diff": 0.431411, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "140/150", "eta": "0:02:01", "iter": "20/27", "loss": 0.018440, "lr": 0.000012, "mem": 3670, "time_diff": 0.439123, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "140/150", "eta": "0:03:26", "loss": 0.017343, "lr": 0.000011, "mem": 3670, "time_diff": 0.765695, "top1_err": 0.740740, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "val_epoch", "epoch": "140/150", "mem": 3670, "min_top1_err": 4.371583, "min_top5_err": 0.546448, "time_diff": 0.763069, "top1_err": 4.371583, "top5_err": 0.546448}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  140
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "141/150", "eta": "0:01:53", "iter": "10/27", "loss": 0.013080, "lr": 0.000010, "mem": 3670, "time_diff": 0.437841, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "141/150", "eta": "0:01:44", "iter": "20/27", "loss": 0.005294, "lr": 0.000009, "mem": 3670, "time_diff": 0.418684, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "141/150", "eta": "0:03:01", "loss": 0.011314, "lr": 0.000009, "mem": 3670, "time_diff": 0.749258, "top1_err": 0.246913, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  141
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "142/150", "eta": "0:02:19", "iter": "10/27", "loss": 0.014803, "lr": 0.000008, "mem": 3670, "time_diff": 0.598662, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "142/150", "eta": "0:01:35", "iter": "20/27", "loss": 0.005092, "lr": 0.000008, "mem": 3670, "time_diff": 0.426688, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "142/150", "eta": "0:02:41", "loss": 0.020840, "lr": 0.000007, "mem": 3670, "time_diff": 0.747580, "top1_err": 0.864197, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  142
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "143/150", "eta": "0:01:28", "iter": "10/27", "loss": 0.006689, "lr": 0.000006, "mem": 3670, "time_diff": 0.431977, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "143/150", "eta": "0:01:19", "iter": "20/27", "loss": 0.014155, "lr": 0.000006, "mem": 3670, "time_diff": 0.408122, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "143/150", "eta": "0:02:25", "loss": 0.027526, "lr": 0.000005, "mem": 3670, "time_diff": 0.768830, "top1_err": 0.987654, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  143
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "144/150", "eta": "0:01:19", "iter": "10/27", "loss": 0.022849, "lr": 0.000005, "mem": 3670, "time_diff": 0.443261, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "144/150", "eta": "0:01:12", "iter": "20/27", "loss": 0.010461, "lr": 0.000004, "mem": 3670, "time_diff": 0.426704, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "144/150", "eta": "0:02:01", "loss": 0.016620, "lr": 0.000004, "mem": 3670, "time_diff": 0.752704, "top1_err": 0.740740, "top5_err": 0.123457}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  144
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "145/150", "eta": "0:01:07", "iter": "10/27", "loss": 0.006604, "lr": 0.000004, "mem": 3670, "time_diff": 0.441763, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "145/150", "eta": "0:01:00", "iter": "20/27", "loss": 0.004035, "lr": 0.000003, "mem": 3670, "time_diff": 0.423918, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "145/150", "eta": "0:01:42", "loss": 0.010664, "lr": 0.000003, "mem": 3670, "time_diff": 0.759737, "top1_err": 0.370370, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  145
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "146/150", "eta": "0:00:55", "iter": "10/27", "loss": 0.008265, "lr": 0.000002, "mem": 3670, "time_diff": 0.440456, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "146/150", "eta": "0:00:49", "iter": "20/27", "loss": 0.005319, "lr": 0.000002, "mem": 3670, "time_diff": 0.428572, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "146/150", "eta": "0:01:22", "loss": 0.016055, "lr": 0.000002, "mem": 3670, "time_diff": 0.767158, "top1_err": 0.617284, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  146
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "147/150", "eta": "0:00:41", "iter": "10/27", "loss": 0.002017, "lr": 0.000001, "mem": 3670, "time_diff": 0.420680, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "147/150", "eta": "0:00:37", "iter": "20/27", "loss": 0.004322, "lr": 0.000001, "mem": 3670, "time_diff": 0.423016, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "147/150", "eta": "0:00:59", "loss": 0.010300, "lr": 0.000001, "mem": 3670, "time_diff": 0.733029, "top1_err": 0.246913, "top5_err": 0.123457}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  147
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "148/150", "eta": "0:00:32", "iter": "10/27", "loss": 0.014970, "lr": 0.000001, "mem": 3670, "time_diff": 0.464087, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "148/150", "eta": "0:00:26", "iter": "20/27", "loss": 0.011446, "lr": 0.000001, "mem": 3670, "time_diff": 0.426267, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "148/150", "eta": "0:00:40", "loss": 0.018156, "lr": 0.000000, "mem": 3670, "time_diff": 0.757055, "top1_err": 0.370370, "top5_err": 0.123457}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  148
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "149/150", "eta": "0:00:18", "iter": "10/27", "loss": 0.005231, "lr": 0.000000, "mem": 3670, "time_diff": 0.412549, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "149/150", "eta": "0:00:14", "iter": "20/27", "loss": 0.007155, "lr": 0.000000, "mem": 3670, "time_diff": 0.413125, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "149/150", "eta": "0:00:20", "loss": 0.011764, "lr": 0.000000, "mem": 3670, "time_diff": 0.747657, "top1_err": 0.246913, "top5_err": 0.000000}
+cfg.TRAIN.CHECKPOINT_PERIOD 1
+curve_epoch:  149
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "150/150", "eta": "0:00:08", "iter": "10/27", "loss": 0.011641, "lr": 0.000000, "mem": 3670, "time_diff": 0.486089, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_iter", "epoch": "150/150", "eta": "0:00:02", "iter": "20/27", "loss": 0.005885, "lr": 0.000000, "mem": 3670, "time_diff": 0.423865, "top1_err": 0.000000, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "train_epoch", "epoch": "150/150", "eta": "0:00:00", "loss": 0.022279, "lr": 0.000000, "mem": 3670, "time_diff": 0.744042, "top1_err": 0.864197, "top5_err": 0.000000}
+[INFO: logging.py: 66]: json_stats: {"_type": "val_epoch", "epoch": "150/150", "mem": 3670, "min_top1_err": 4.371583, "min_top5_err": 0.000000, "time_diff": 0.739110, "top1_err": 4.918031, "top5_err": 0.000000}
+
+Process finished with exit code 0
+

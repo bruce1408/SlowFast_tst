@@ -1,0 +1,12 @@
+checkpoints_2/checkpoints/checkpoint_epoch_00184.pth
+[INFO: logging.py:   67]: json_stats: {"split": "test_final", "top1_acc": "97.88"}
+checkpoints_3/checkpoints/checkpoint_epoch_00196.pth
+[INFO: logging.py:   67]: json_stats: {"split": "test_final", "top1_acc": "98.94"}
+checkpoints_4/checkpoints/checkpoint_epoch_00212.pth
+[INFO: logging.py:   67]: json_stats: {"split": "test_final", "top1_acc": "98.94"}
+checkpoints_4/checkpoints/checkpoint_epoch_00213.pyth
+[INFO: logging.py:   67]: json_stats: {"split": "test_final", "top1_acc": "98.94"}
+checkpoints_4/checkpoints/checkpoint_epoch_00080.pyth
+[INFO: logging.py:   67]: json_stats: {"split": "test_final", "top1_acc": "98.94"}
+checkpoints_4/checkpoints/checkpoint_epoch_00300.pyth
+[INFO: logging.py:   67]: json_stats: {"split": "test_final", "top1_acc": "98.94"}
